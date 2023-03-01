@@ -7,9 +7,6 @@
         "laravel": {
             "providers": [
                 "InstagramServiceProvider"
-            ],
-            "dont-discover": [
-                "*"
             ]
         }
     },
