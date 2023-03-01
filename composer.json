@@ -20,12 +20,5 @@
         "psr-4": {
             "Jusdepixel\\InstagramApiLaravel\\": "/src"
         }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "InstagramServiceProvider"
-            ]
-        }
     }
 }
