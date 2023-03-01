@@ -1,5 +1,5 @@
 # Instagram Api Laravel
-Get your instagram feeds and share it !
+Get your instagram feeds and share them !
 ***
 ![Laravel support v9, v10](https://img.shields.io/badge/Laravel%20Support-v9%2C%20v10-blue)
 ![Tests passing](https://img.shields.io/badge/Tests-passing-brightgreen)
