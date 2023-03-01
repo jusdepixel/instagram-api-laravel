@@ -21,11 +21,6 @@
             "Jusdepixel\\InstagramApiLaravel\\": "/src"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Jusdepixel\\InstagramApiLaravel\\Tests\\": "tests/"
-        }
-    },
     "extra": {
         "laravel": {
             "providers": [
