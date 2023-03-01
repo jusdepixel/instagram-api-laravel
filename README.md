@@ -25,31 +25,31 @@ php artisan migrate
 INSTAGRAM_CLIENT_ID=INSTAGRAM_CLIENT_ID
 INSTAGRAM_CLIENT_SECRET=INSTAGRAM_CLIENT_SECRET
 INSTAGRAM_REQUEST_URI=INSTAGRAM_REQUEST_URI
-INSTAGRAM_ROUTES_PREFIX=INSTAGRAM_ROUTES_PREFIX
+INSTAGRAM_ROUTES_PREFIX=instagram
 ```
 
 ## Usage
 #### Get your instagram app code first & get token
 ```
-GET INSTAGRAM_ROUTES_PREFIX/init/url
-GET INSTAGRAM_ROUTES_PREFIX/auth/login/INSTAGRAM_CODE
+GET     instagram/init/url
+GET     instagram/auth/login/INSTAGRAM_CODE
 ```
 #### Routes
 ```
-GET INSTAGRAM_ROUTES_PREFIX/init/url
-GET INSTAGRAM_ROUTES_PREFIX/auth/code/{code}
-GET INSTAGRAM_ROUTES_PREFIX/auth/login/{code}
-GET INSTAGRAM_ROUTES_PREFIX/auth/logout
-GET INSTAGRAM_ROUTES_PREFIX/auth/profile
-GET INSTAGRAM_ROUTES_PREFIX/me/profile
-GET INSTAGRAM_ROUTES_PREFIX/me/posts
-GET INSTAGRAM_ROUTES_PREFIX/me/posts/{id}
-POST INSTAGRAM_ROUTES_PREFIX/me/posts/{instagramId}
-DELETE INSTAGRAM_ROUTES_PREFIX/me/posts/{post}
-GET INSTAGRAM_ROUTES_PREFIX/posts
-GET INSTAGRAM_ROUTES_PREFIX/posts/{id}
-GET INSTAGRAM_ROUTES_PREFIX/users
-GET INSTAGRAM_ROUTES_PREFIX/users/{user}
+GET     instagram/init/url
+GET     instagram/auth/code/{code}
+GET     instagram/auth/login/{code}
+GET     instagram/auth/logout
+GET     instagram/auth/profile
+GET     instagram/me/profile
+GET     instagram/me/posts
+GET     instagram/me/posts/{id}
+POST    instagram/me/posts/{instagramId}
+DELETE  instagram/me/posts/{post}
+GET     instagram/posts
+GET     instagram/posts/{id}
+GET     instagram/users
+GET     instagram/users/{user}
 ```
 ## Link
 [Github instagram-api-laravel](https://github.com/jusdepixel/instagram-api-laravel)
