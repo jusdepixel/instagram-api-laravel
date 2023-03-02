@@ -14,7 +14,7 @@ class Init extends Session
 {
     public const AUTHORIZE_URL = 'https://api.instagram.com/oauth/authorize';
     protected const TOKEN_URL = 'https://api.instagram.com/oauth/access_token';
-    protected const REFRESH_TOKEN_URL = "https://graph.instagram.com/access_token";
+    protected const REFRESH_TOKEN_URL = "https://graph.instagram.com/refresh_access_token";
     protected const GRAPH_URL = "https://graph.instagram.com/";
     protected const MEDIAS_URI = "me/media";
 
