@@ -1504,14 +1504,20 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/me/posts/17925769868535282",
+									"raw": "{{baseUrl}}/me/posts/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"me",
 										"posts",
-										"17925769868535282"
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": null
+										}
 									]
 								}
 							},
@@ -1822,14 +1828,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/me/posts/18158307181285478",
+									"raw": "{{baseUrl}}/me/posts/:instagramId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"me",
 										"posts",
-										"18158307181285478"
+										":instagramId"
+									],
+									"variable": [
+										{
+											"key": "instagramId",
+											"value": null
+										}
 									]
 								}
 							},
@@ -2189,7 +2201,7 @@
 							]
 						},
 						{
-							"name": "/me/posts/:post",
+							"name": "/me/posts/:id",
 							"request": {
 								"method": "DELETE",
 								"header": [
@@ -2212,18 +2224,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/me/posts/:post",
+									"raw": "{{baseUrl}}/me/posts/:id",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"me",
 										"posts",
-										":post"
+										":id"
 									],
 									"variable": [
 										{
-											"key": "post",
+											"key": "id",
 											"value": null
 										}
 									]
@@ -3953,6 +3965,54 @@
 			]
 		},
 		{
+			"name": "refresh",
+			"item": [
+				{
+					"name": "/refresh/token",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/refresh/token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/refresh/post/:instagramId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/refresh/post/:instagramId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh",
+								"post",
+								":instagramId"
+							],
+							"variable": [
+								{
+									"key": "instagramId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "/init/url",
 			"request": {
 				"method": "GET",
@@ -4214,7 +4274,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "",
+				"value": "IGQVJVd0RfVGlSLWZAGTlZAiYlVsdmZAHdEdHQ1JRb0dJbGpLaUlNT2VzOUZAUQmdaT0w4bi02Q0F0LWFJM2NKU3pwX3hnRUFrT1BXdmduWlRKQzZAra0F6M0owRUdzZAGQ5cW9MbW1ud0hvLThnenZACUThCM0Y4M3VLbVB6OTh3",
 				"type": "string"
 			}
 		]
