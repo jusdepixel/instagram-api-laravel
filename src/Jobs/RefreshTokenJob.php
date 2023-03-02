@@ -45,7 +45,7 @@ class RefreshTokenJob implements ShouldQueue
         }
 
         foreach($usersRefresh as $id => $username) {
-            print_r("Refresh $username ($id)");
+            print_r("\nRefresh $username ($id)");
         }
     }
 }
