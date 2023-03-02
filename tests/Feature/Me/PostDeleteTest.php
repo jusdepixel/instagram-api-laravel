@@ -35,6 +35,6 @@ class PostDeleteTest extends Instagram
     {
         self::fakeProfile();
         $response = $this->delete('/api/me/posts/bac04411-9999-4cd2-b9d9-06ad4f9c1c62');
-        $response->assertStatus(404);
+        $response->assertStatus(400);
     }
 }

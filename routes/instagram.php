@@ -52,7 +52,7 @@ Route:: middleware([
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostCreateController::class)
                     ->name('post@create');
 
-                Route::delete('/posts/{post}',
+                Route::delete('/posts/{id}',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostDeleteController::class)
                     ->name('post@delete');
             });

@@ -9,12 +9,21 @@ use Illuminate\Http\Response;
 
 final class PostDeleteController
 {
-    public function __invoke(InstagramPost $post): Response
+    public function __invoke(string $id): Response
     {
-        $post->delete();
+        $result = InstagramPost::query()->find($id);
+
+        if ($result) {
+            $result->delete();
+
+            return response([
+                'message' => 'Post has been deleted'
+            ], 204);
+
+        }
 
         return response([
-            'message' => 'Post has been deleted'
-        ], 204);
+            'message' =>  'Post does not exist'
+        ], 400);
     }
 }
