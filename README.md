@@ -5,6 +5,15 @@ Get your instagram feeds and share them !
 ![Tests passing](https://img.shields.io/badge/Tests-passing-brightgreen)
 ![Licence](https://img.shields.io/badge/Licence-MIT-yellow)
 
+## Configuration
+#### Setting your Instagram application in .env
+```
+INSTAGRAM_CLIENT_ID=INSTAGRAM_CLIENT_ID
+INSTAGRAM_CLIENT_SECRET=INSTAGRAM_CLIENT_SECRET
+INSTAGRAM_REQUEST_URI=INSTAGRAM_REQUEST_URI
+INSTAGRAM_ROUTES_PREFIX=api
+```
+
 ## Installation
 #### Install this package via Composer
 ```
@@ -14,42 +23,41 @@ composer require jusdepixel/instagram-api-laravel
 ```
 Jusdepixel\InstagramApiLaravel\InstagramServiceProvider::class,
 ```
+#### Add jobs in app/Console/Kernel.php
+```
+protected function schedule(Schedule $schedule): void
+{
+    /** ... */
+    $schedule->job(new RefreshTokenJob)->daily();
+}
+```
 #### Run migration
 ```
 php artisan migrate
 ```
 
-## Configuration
-#### Setting your Instagram application in .env
-```
-INSTAGRAM_CLIENT_ID=INSTAGRAM_CLIENT_ID
-INSTAGRAM_CLIENT_SECRET=INSTAGRAM_CLIENT_SECRET
-INSTAGRAM_REQUEST_URI=INSTAGRAM_REQUEST_URI
-INSTAGRAM_ROUTES_PREFIX=instagram
-```
-
 ## Usage
 #### Get your instagram app code first & get token
 ```
-GET     instagram/init/url
-GET     instagram/auth/login/INSTAGRAM_CODE
+GET         api/init/url
+GET         api/auth/login/INSTAGRAM_CODE
 ```
 #### Routes
 ```
-GET     instagram/init/url
-GET     instagram/auth/code/{code}
-GET     instagram/auth/login/{code}
-GET     instagram/auth/logout
-GET     instagram/auth/profile
-GET     instagram/me/profile
-GET     instagram/me/posts
-GET     instagram/me/posts/{id}
-POST    instagram/me/posts/{instagramId}
-DELETE  instagram/me/posts/{post}
-GET     instagram/posts
-GET     instagram/posts/{id}
-GET     instagram/users
-GET     instagram/users/{user}
+GET         api/init/url
+GET         api/auth/code/{code}
+GET         api/auth/login/{code}
+GET         api/auth/logout
+GET         api/auth/profile
+GET         api/me/profile
+GET         api/me/posts
+GET         api/me/posts/{id}
+POST        api/me/posts/{instagramId}
+DELETE      api/me/posts/{post}
+GET         api/posts
+GET         api/posts/{id}
+GET         api/users
+GET         api/users/{user}
 ```
 ## Link
 [Github instagram-api-laravel](https://github.com/jusdepixel/instagram-api-laravel)  

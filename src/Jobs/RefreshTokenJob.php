@@ -20,7 +20,7 @@ class RefreshTokenJob implements ShouldQueue
      */
     public function __invoke(): void
     {
-        $daysExpires = 61;
+        $daysExpires = 2;
         $usersRefresh = [];
         $auth = new Auth();
 
