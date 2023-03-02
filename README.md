@@ -39,8 +39,8 @@ php artisan migrate
 ## Usage
 #### Get your instagram app code first & get token
 ```
-GET         api/init/url
-GET         api/auth/login/INSTAGRAM_CODE
+GET api/init/url
+GET api/auth/login/INSTAGRAM_CODE
 ```
 #### Routes
 ```
