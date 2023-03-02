@@ -44,20 +44,7 @@ GET         api/auth/login/INSTAGRAM_CODE
 ```
 #### Routes
 ```
-GET         api/init/url
-GET         api/auth/code/{code}
-GET         api/auth/login/{code}
-GET         api/auth/logout
-GET         api/auth/profile
-GET         api/me/profile
-GET         api/me/posts
-GET         api/me/posts/{id}
-POST        api/me/posts/{instagramId}
-DELETE      api/me/posts/{post}
-GET         api/posts
-GET         api/posts/{id}
-GET         api/users
-GET         api/users/{user}
+See instagram-api-laravel.postman_collection.json
 ```
 ## Link
 [Github instagram-api-laravel](https://github.com/jusdepixel/instagram-api-laravel)  
