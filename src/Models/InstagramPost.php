@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace Jusdepixel\InstagramApiLaravel\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramPostFactory;
 
 /**
- * InstagramPost model
  * @package Jusdepixel\InstagramApiLaravel\Models\InstagramPost
+ * @factory Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramPostFactory
  */
 final class InstagramPost extends Model
 {
@@ -41,5 +43,10 @@ final class InstagramPost extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(InstagramUser::class, 'instagram_user_id');
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return InstagramPostFactory::new();
     }
 }

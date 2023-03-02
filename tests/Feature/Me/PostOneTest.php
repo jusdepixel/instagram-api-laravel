@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Me;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Me;
 
-use database\seeders\InstagramSeeder;
+use Jusdepixel\InstagramApiLaravel\Database\Seeders\InstagramSeeder;
+use Exception;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\Instagram;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class PostOneTest extends Instagram
 {
@@ -16,6 +17,9 @@ class PostOneTest extends Instagram
         $response->assertStatus(403);
     }
 
+    /**
+     * @throws Exception
+     */
     public function test_status_error()
     {
         self::fakeProfile();
@@ -23,6 +27,9 @@ class PostOneTest extends Instagram
         $response->assertStatus(400);
     }
 
+    /**
+     * @throws Exception
+     */
     public function test_response_success()
     {
         self::fakeProfile();
@@ -35,7 +42,7 @@ class PostOneTest extends Instagram
                     $json
                         ->where('id', 'bac04411-9999-4cd2-b9d9-06ad4f9c1c62')
                         ->where('instagram_id', 12345678910)
-                        ->where('instagram_user_id', 'bac04411-0000-4cd2-b9d9-06ad4f9c1c62')
+                        ->where('instagram_user_id', '88888888-4444-4444-4444-121212121212')
                         ->where('caption', 'Caption Post !')
                         ->where('media_type', 'IMAGE')
                         ->where('media_url', 'http://media.url/12345678910')

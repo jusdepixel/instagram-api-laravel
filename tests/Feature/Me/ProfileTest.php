@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Me;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Me;
 
-use App\Http\Resources\Instagram\Post\PostCollection;
-use database\seeders\InstagramSeeder;
+use Jusdepixel\InstagramApiLaravel\Database\Seeders\InstagramSeeder;
+use Exception;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\Instagram;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class ProfileTest extends Instagram
 {
@@ -18,6 +18,9 @@ class ProfileTest extends Instagram
         $response->assertStatus(403);
     }
 
+    /**
+     * @throws Exception
+     */
     public function test_status_success()
     {
         self::fakeProfile();
@@ -28,6 +31,9 @@ class ProfileTest extends Instagram
         $response->assertStatus(200);
     }
 
+    /**
+     * @throws Exception
+     */
     public function test_response_success()
     {
         self::fakeProfile();
@@ -37,11 +43,11 @@ class ProfileTest extends Instagram
 
         $response->assertJson(fn (AssertableJson $json) =>
             $json
-                ->where('id', 'bac04411-0000-4cd2-b9d9-06ad4f9c1c62')
+                ->where('id', '88888888-4444-4444-4444-121212121212')
                 ->where('instagram_id', 123456789)
                 ->where('username', 'userName')
                 ->where('media_count', 42)
-                ->where('access_token', 'sdsdkjçiqjlkqjdç_eseklkq,sdo,ce_lq,,scoijqelqek,dllqldkq,cv')
+                ->where('access_token', 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA')
                 ->where('token_type', 'Bearer')
                 ->where('expires_in', 1677267776)
                 ->where('created_at', '2023-02-24T19:42:56.000000Z')

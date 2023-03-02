@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Users;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Users;
 
-use database\seeders\InstagramSeeder;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\Instagram;
+use Jusdepixel\InstagramApiLaravel\Database\Seeders\InstagramSeeder;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class AllTest extends Instagram
 {
@@ -30,11 +30,11 @@ class AllTest extends Instagram
                 ->has('users.data')
                 ->has('users.data.0', fn ($json) =>
                     $json
-                        ->where('id', 'bac04411-0000-4cd2-b9d9-06ad4f9c1c62')
+                        ->where('id', '88888888-4444-4444-4444-121212121212')
                         ->where('instagram_id', 123456789)
                         ->where('username', 'userName')
                         ->where('media_count', 42)
-                        ->where('access_token', 'sdsdkjçiqjlkqjdç_eseklkq,sdo,ce_lq,,scoijqelqek,dllqldkq,cv')
+                        ->where('access_token', 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA')
                         ->where('token_type', 'Bearer')
                         ->where('expires_in', 1677267776)
                         ->where('created_at', '2023-02-24T19:42:56.000000Z')

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Posts;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Posts;
 
-use database\seeders\InstagramSeeder;
+use Jusdepixel\InstagramApiLaravel\Database\Seeders\InstagramSeeder;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\Instagram;
 
 class OneTest extends Instagram
 {
@@ -38,7 +38,7 @@ class OneTest extends Instagram
                     ->where('id', 'bac04411-9999-4cd2-b9d9-06ad4f9c1c62')
                     ->where('instagram_id', 12345678910)
                     ->where('author', [
-                        'id' => 'bac04411-0000-4cd2-b9d9-06ad4f9c1c62',
+                        'id' => '88888888-4444-4444-4444-121212121212',
                         'instagram_id' => 123456789,
                         'username' => 'userName',
                     ])

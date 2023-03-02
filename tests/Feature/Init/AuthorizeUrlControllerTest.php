@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace tests\Feature\Init;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Init;
 
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\Instagram;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class AuthorizeUrlControllerTest extends Instagram
 {

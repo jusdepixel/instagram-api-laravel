@@ -1,25 +1,17 @@
 <?php
 
-namespace Tests;
+namespace Jusdepixel\InstagramApiLaravel\Tests;
 
 use Carbon\Carbon;
+
+use Exception;
 use Jusdepixel\InstagramApiLaravel\DataObjects\ProfileDataObject;
 use Jusdepixel\InstagramApiLaravel\Http\Resources\Me\MePostResource;
-use Jusdepixel\InstagramApiLaravel\Instagram\Instagram as InstagramApi;
 
 abstract class Instagram extends TestCase
 {
-    protected static InstagramApi $instagram;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        self::$instagram = new InstagramApi();
-    }
-
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     protected static function fakeProfile(): ProfileDataObject
     {
@@ -28,8 +20,8 @@ abstract class Instagram extends TestCase
             'isAuthenticated' => true,
             'instagramId' => 123456789,
             'mediaCount' => 42,
-            'userId' => 'bac04411-0000-4cd2-b9d9-06ad4f9c1c62',
-            'accessToken' => 'sdsdkjçiqjlkqjdç_eseklkq,sdo,ce_lq,,scoijqelqek,dllqldkq,cv'
+            'userId' => '88888888-4444-4444-4444-121212121212',
+            'accessToken' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA'
         ]);
     }
 

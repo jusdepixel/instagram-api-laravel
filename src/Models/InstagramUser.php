@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace Jusdepixel\InstagramApiLaravel\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramUserFactory;
 
 /**
- * InstagramUser model
  * @package Jusdepixel\InstagramApiLaravel\Models\InstagramUser
+ * @factory Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramUserFactory
  */
 final class InstagramUser extends Model
 {
@@ -39,5 +41,10 @@ final class InstagramUser extends Model
     public function posts(): HasMany
     {
         return $this->HasMany(InstagramPost::class);
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return InstagramUserFactory::new();
     }
 }

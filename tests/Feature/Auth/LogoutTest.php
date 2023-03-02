@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Auth;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Auth;
 
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\Instagram;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class LogoutTest extends Instagram
 {

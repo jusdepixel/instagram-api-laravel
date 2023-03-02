@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace tests\Feature\Auth;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Auth;
 
 use Illuminate\Testing\Fluent\AssertableJson;
-use Tests\Instagram;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class ProfileTest extends Instagram
 {
@@ -35,8 +35,8 @@ class ProfileTest extends Instagram
                     ->where('isAuthenticated', true)
                     ->where('instagramId', 123456789)
                     ->where('mediaCount', 42)
-                    ->where('userId', 'bac04411-0000-4cd2-b9d9-06ad4f9c1c62')
-                    ->where('accessToken', 'sdsdkjçiqjlkqjdç_eseklkq,sdo,ce_lq,,scoijqelqek,dllqldkq,cv')
+                    ->where('userId', '88888888-4444-4444-4444-121212121212')
+                    ->where('accessToken', 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA')
             )
         );
     }

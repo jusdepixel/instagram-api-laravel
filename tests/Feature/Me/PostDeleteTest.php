@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Me;
+namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Me;
 
-use database\seeders\InstagramSeeder;
-use Tests\Instagram;
+use Jusdepixel\InstagramApiLaravel\Database\Seeders\InstagramSeeder;
+use Exception;
+use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class PostDeleteTest extends Instagram
 {
@@ -16,6 +17,9 @@ class PostDeleteTest extends Instagram
         $response->assertStatus(403);
     }
 
+    /**
+     * @throws Exception
+     */
     public function test_status_success()
     {
         self::fakeProfile();
@@ -24,6 +28,9 @@ class PostDeleteTest extends Instagram
         $response->assertStatus(204);
     }
 
+    /**
+     * @throws Exception
+     */
     public function test_status_error()
     {
         self::fakeProfile();
