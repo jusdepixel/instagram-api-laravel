@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Routing\Middleware\ThrottleRequests;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
 
 Route:: middleware([
-    \Illuminate\Session\Middleware\StartSession::class,
-    \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+    StartSession::class,
+    ThrottleRequests::class.':api',
 ])
     ->prefix('/' . config('instagram.routes_prefix'))
     ->group(static function(): void {
@@ -85,12 +87,15 @@ Route:: middleware([
             //        ->name('user@delete');
         });
 
-        Route::prefix('/refresh')->group(static function(): void {
 
-            Route::put('/token',\Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\TokenController::class)
-                ->name('refresh@token');
+        Route::prefix('/refresh')
+            ->middleware(\Jusdepixel\InstagramApiLaravel\Http\Middleware\Instagram::class)
+            ->group(static function(): void {
 
-            Route::put('/post/{instagramId}',\Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\PostController::class)
-                ->name('refresh@post');
+                Route::put('/token',\Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\TokenController::class)
+                    ->name('refresh@token');
+
+                Route::put('/post/{instagramId}',\Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\PostController::class)
+                    ->name('refresh@post');
         });
     });
