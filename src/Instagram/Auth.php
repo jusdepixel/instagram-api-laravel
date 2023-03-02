@@ -66,16 +66,12 @@ class Auth extends Profile
     /**
      * @throws Exception
      */
-    public static function requestLongLifeToken(?string $token = null): array
+    public static function requestLongLifeToken(): array
     {
         try {
-            if ($token === null) {
-                $token = self::getProfile()->accessToken;
-            }
-
             $params = [
                 'query' => [
-                    'access_token' => $token,
+                    'access_token' => self::getProfile()->accessToken,
                     'grant_type' => 'ig_exchange_token',
                     'client_secret' => self::$clientSecret,
                 ]
@@ -83,7 +79,7 @@ class Auth extends Profile
 
             $response = self::$clientGuzzle->request(
                 'GET',
-                self::REFRESH_TOKEN_URL,
+                self::LONG_LIFE_TOKEN_URL,
                 $params
             );
 
@@ -110,6 +106,34 @@ class Auth extends Profile
                 ];
             }
 
+            throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    public static function requestRefreshToken(?string $token = null): object
+    {
+        try {
+            $params = [
+                'query' => [
+                    'access_token' => $token,
+                    'grant_type' => 'ig_refresh_token'
+                ]
+            ];
+
+            $response = self::$clientGuzzle->request(
+                'GET',
+                self::REFRESH_LONG_LIFE_TOKEN_URL,
+                $params
+            );
+
+            $result = json_decode($response->getBody()->getContents());
+
+            return $result;
+
+        } catch (GuzzleException $e) {
             throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());
         }
     }

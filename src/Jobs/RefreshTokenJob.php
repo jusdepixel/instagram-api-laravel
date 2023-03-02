@@ -20,26 +20,25 @@ class RefreshTokenJob implements ShouldQueue
      */
     public function __invoke(): void
     {
-        $user = new InstagramUser();
-
-        $daysExpires = 60;
+        $daysExpires = 61;
         $usersRefresh = [];
         $auth = new Auth();
 
-        $usersToRefresh = $user::query()
+        $usersToRefresh = InstagramUser::query()
             ->select('id', 'username', 'access_token')
             ->where('expires_in', '<', 86400 * $daysExpires)
             ->get();
 
+
         foreach ($usersToRefresh as $user) {
-            [$accessToken, $tokenType, $expiresIn] = $auth::requestLongLifeToken($user->access_token);
+            $refreshToken = $auth::requestRefreshToken($user->access_token);
 
             $user::query()
                 ->where('id', $user->id)
                 ->update([
-                    'access_token' => $accessToken,
-                    'token_typed' => $tokenType,
-                    'expires_in' => $expiresIn
+                    'access_token' => $refreshToken->access_token,
+                    'token_type' => $refreshToken->token_type,
+                    'expires_in' => $refreshToken->expires_in
                 ]);
 
             $usersRefresh[$user->id] = $user->username;
