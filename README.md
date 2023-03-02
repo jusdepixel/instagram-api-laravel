@@ -52,4 +52,5 @@ GET     instagram/users
 GET     instagram/users/{user}
 ```
 ## Link
-[Github instagram-api-laravel](https://github.com/jusdepixel/instagram-api-laravel)
+[Github instagram-api-laravel](https://github.com/jusdepixel/instagram-api-laravel)  
+[Packagist instagram-api-laravel](https://packagist.org/packages/jusdepixel/instagram-api-laravel)
