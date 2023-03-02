@@ -29,6 +29,7 @@ protected function schedule(Schedule $schedule): void
 {
     /** ... */
     $schedule->job(new RefreshTokenJob)->daily();
+    $schedule->job(new RefreshMediaJob)->daily();
 }
 ```
 #### Run migration
