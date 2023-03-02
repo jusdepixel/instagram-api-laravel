@@ -110,4 +110,31 @@ final class Instagram extends Auth
             throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());
         }
     }
+
+    /**
+     * @throws Exception
+     */
+    public function refreshMedia(string $id, string $token)//: string
+    {
+        try {
+            $params = [
+                'query' => [
+                    'access_token' => $token,
+                    'fields' => self::FIELDS
+                ]
+            ];
+
+            $response = self::$clientGuzzle->request(
+                'GET',
+                self::GRAPH_URL . $id,
+                $params
+            );
+            $result = json_decode($response->getBody()->getContents());
+
+            return $result->media_url;
+
+        } catch (GuzzleException $e) {
+            throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());
+        }
+    }
 }
