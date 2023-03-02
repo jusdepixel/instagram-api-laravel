@@ -2855,7 +2855,7 @@
 					]
 				},
 				{
-					"name": "{{baseUrl}}/me/delete",
+					"name": "/me/delete",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -4292,7 +4292,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "IGQVJVd0RfVGlSLWZAGTlZAiYlVsdmZAHdEdHQ1JRb0dJbGpLaUlNT2VzOUZAUQmdaT0w4bi02Q0F0LWFJM2NKU3pwX3hnRUFrT1BXdmduWlRKQzZAra0F6M0owRUdzZAGQ5cW9MbW1ud0hvLThnenZACUThCM0Y4M3VLbVB6OTh3",
+				"value": "",
 				"type": "string"
 			}
 		]
