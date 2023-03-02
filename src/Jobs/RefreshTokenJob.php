@@ -15,27 +15,18 @@ class RefreshTokenJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private InstagramUser $user;
-
     /**
      * @throws Exception
      */
-    public function __construct()
+    public function __invoke(): void
     {
-        $this->user = new InstagramUser();
-        $this->handle();
-    }
+        $user = new InstagramUser();
 
-    /**
-     * @throws Exception
-     */
-    public function handle(): void
-    {
         $daysExpires = 60;
         $usersRefresh = [];
         $auth = new Auth();
 
-        $usersToRefresh = $this->user::query()
+        $usersToRefresh = $user::query()
             ->select('id', 'username', 'access_token')
             ->where('expires_in', '<', 86400 * $daysExpires)
             ->get();
@@ -43,7 +34,7 @@ class RefreshTokenJob implements ShouldQueue
         foreach ($usersToRefresh as $user) {
             [$accessToken, $tokenType, $expiresIn] = $auth::requestLongLifeToken($user->access_token);
 
-            $this->user::query()
+            $user::query()
                 ->where('id', $user->id)
                 ->update([
                     'access_token' => $accessToken,
