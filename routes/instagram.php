@@ -1,12 +1,10 @@
 <?php
 
-use Illuminate\Routing\Middleware\ThrottleRequests;
-use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
 
 Route:: middleware([
-    StartSession::class,
-    ThrottleRequests::class.':api',
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
 ])
     ->prefix('/' . config('instagram.routes_prefix'))
     ->group(static function(): void {
@@ -52,11 +50,15 @@ Route:: middleware([
 
                 Route::post('/posts/{instagramId}',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostCreateController::class)
-                    ->name('post@create');
+                    ->name('me@post.create');
 
                 Route::delete('/posts/{id}',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostDeleteController::class)
-                    ->name('post@delete');
+                    ->name('me@post.delete');
+
+                Route::delete('/delete',
+                    \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\DeleteController::class)
+                    ->name('me@delete');
             });
 
         Route::prefix('/posts')->group(static function(): void {
@@ -77,16 +79,7 @@ Route:: middleware([
 
             Route::get('/{user}', \Jusdepixel\InstagramApiLaravel\Http\Controllers\Users\OneController::class)
                 ->name('user@one');
-
-            //    Route::post('/{user}/posts/{id}/create',
-            // \Jusdepixel\InstagramApiLaravel\Http\Controllers\Api\User\CreateController::class)
-            //        ->name('user@create');
-            //
-            //    Route::delete('/{user}/posts/{id}/delete',
-            // \Jusdepixel\InstagramApiLaravel\Http\Controllers\Api\User\DeleteController::class)
-            //        ->name('user@delete');
         });
-
 
         Route::prefix('/refresh')
             ->middleware(\Jusdepixel\InstagramApiLaravel\Http\Middleware\Instagram::class)
@@ -97,5 +90,5 @@ Route:: middleware([
 
                 Route::put('/post/{instagramId}',\Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\PostController::class)
                     ->name('refresh@post');
-        });
+            });
     });
