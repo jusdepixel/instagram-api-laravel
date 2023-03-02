@@ -1,24 +1,30 @@
 {
-    "name": "jusdepixel/instagram-api-laravel",
-    "description": "Consume Instagram API with Laravel",
-    "type": "library",
-    "license": "MIT",
-    "authors": [{
-        "name": "Jusdepixel",
-        "email": "mandy@jusdepixel.fr"
-    }],
-    "keywords": [
-        "Instagram",
-        "API",
-        "Laravel"
-    ],
-    "require": {
-        "php": "^8.1",
-        "illuminate/support": "v10.1.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "Jusdepixel\\InstagramApiLaravel\\": "/src"
-        }
+  "name": "jusdepixel/instagram-api-laravel",
+  "description": "Get your instagram feeds and share them !",
+  "type": "library",
+  "license": "MIT",
+  "authors": [{
+    "name": "Jusdepixel",
+    "email": "mandy@jusdepixel.fr"
+  }],
+  "keywords": [
+    "Instagram",
+    "API",
+    "Laravel"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Jusdepixel\\InstagramApiLaravel\\": "/src"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Jusdepixel\\InstagramApiLaravel\\Tests\\": "/tests"
+    }
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": "^8.1",
+    "illuminate/support": "^10.1"
+  }
 }
