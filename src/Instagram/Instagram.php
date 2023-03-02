@@ -114,9 +114,13 @@ final class Instagram extends Auth
     /**
      * @throws Exception
      */
-    public function refreshMedia(string $id, string $token)//: string
+    public static function refreshMedia(string $id, ?string $token = null): string
     {
         try {
+            if ($token === null) {
+                $token = self::getProfile()->accessToken;
+            }
+
             $params = [
                 'query' => [
                     'access_token' => $token,

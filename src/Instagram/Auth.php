@@ -116,6 +116,10 @@ class Auth extends Profile
     public static function requestRefreshToken(?string $token = null): object
     {
         try {
+            if ($token === null) {
+                $token = self::getProfile()->accessToken;
+            }
+
             $params = [
                 'query' => [
                     'access_token' => $token,
@@ -129,9 +133,7 @@ class Auth extends Profile
                 $params
             );
 
-            $result = json_decode($response->getBody()->getContents());
-
-            return $result;
+            return json_decode($response->getBody()->getContents());
 
         } catch (GuzzleException $e) {
             throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());
