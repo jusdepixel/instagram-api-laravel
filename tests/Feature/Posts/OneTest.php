@@ -36,20 +36,20 @@ class OneTest extends Instagram
             $json->has('post', fn($json) =>
                 $json
                     ->where('id', 'bac04411-9999-4cd2-b9d9-06ad4f9c1c62')
-                    ->where('instagram_id', 12345678910)
-                    ->where('author', [
-                        'id' => '88888888-4444-4444-4444-121212121212',
-                        'instagram_id' => 123456789,
-                        'username' => 'userName',
-                    ])
                     ->where('caption', 'Caption Post !')
                     ->where('media_type', 'IMAGE')
                     ->where('media_url', 'http://media.url/123456789')
-                    ->where('permalink', 'https://perma.link/123456789')
-                    ->where('timestamp', 1677267776)
                     ->where('thumbnail_url', 'http://thumbnail.url/12345678910')
+                    ->where('timestamp', 1677267776)
                     ->where('created_at', '2023-02-24T19:42:56.000000Z')
                     ->where('updated_at', '2023-02-24T19:42:56.000000Z')
+                    ->where('author', [
+                        'id' => '88888888-4444-4444-4444-121212121212',
+                        'username' => 'userName',
+                        'link' => '/api/users/88888888-4444-4444-4444-121212121212',
+                    ])
+                    ->where('permalink', 'https://perma.link/123456789')
+                    ->where('link', '/api/posts/bac04411-9999-4cd2-b9d9-06ad4f9c1c62')
             )
         );
     }

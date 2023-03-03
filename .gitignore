@@ -2,5 +2,6 @@
 /.phpunit.result.cache
 /.phpunit.cache
 /vendor
+/database/database.sqlite
 
 
