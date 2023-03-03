@@ -7,9 +7,6 @@ namespace Jusdepixel\InstagramApiLaravel\Actions;
 use Exception;
 use Jusdepixel\InstagramApiLaravel\Instagram\Auth;
 
-/**
- * @package Jusdepixel\InstagramApiLaravel\Actions\UserSetAction
- */
 final class UserSetAction
 {
     /**

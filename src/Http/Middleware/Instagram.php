@@ -4,23 +4,19 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Http\Middleware;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Jusdepixel\InstagramApiLaravel\Actions\UserSetAction;
 use Jusdepixel\InstagramApiLaravel\Exceptions\InstagramException;
 use Jusdepixel\InstagramApiLaravel\Instagram\Auth;
 use Closure;
 use Exception;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
 
-/**
- * Force authenticatication for Instagram controllers
- * @package Jusdepixel\InstagramApiLaravel\Http\Middleware\Instagram
- */
 class Instagram
 {
-    public function handle($request, Closure $next)//: Response|JsonResponse
+    public function handle($request, Closure $next): Response|JsonResponse
     {
-        $auth = new Auth();
+        $auth = new Auth;
 
         if ($auth::getProfile()->isAuthenticated === false) {
             return (new InstagramException())->render(
@@ -29,7 +25,7 @@ class Instagram
         } else {
             try {
                 (new UserSetAction)->process();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 return (new InstagramException())->render($e);
             }
         }

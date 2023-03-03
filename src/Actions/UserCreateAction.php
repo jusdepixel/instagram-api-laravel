@@ -9,9 +9,6 @@ use Jusdepixel\InstagramApiLaravel\Models\InstagramUser;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @package Jusdepixel\InstagramApiLaravel\Actions\UserCreateAction
- */
 final class UserCreateAction
 {
     /**

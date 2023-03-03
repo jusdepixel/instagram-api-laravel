@@ -8,17 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Jusdepixel\InstagramApiLaravel\Instagram\Auth;
 use Jusdepixel\InstagramApiLaravel\Models\InstagramUser;
 
-/**
- * @package Jusdepixel\InstagramApiLaravel\Actions\UserGetAction
- */
 final class UserGetAction
 {
     public function process(): Model|null
     {
-        $auth = new Auth;
-
         return InstagramUser::query()
-            ->where(['instagram_id' => $auth::getProfile()->instagramId])
+            ->where(['instagram_id' => (new Auth)::getProfile()->instagramId])
             ->first();
     }
 }
