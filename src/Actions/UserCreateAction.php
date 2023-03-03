@@ -10,53 +10,23 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Create Instagram user on first share
  * @package Jusdepixel\InstagramApiLaravel\Actions\UserCreateAction
  */
 final class UserCreateAction
 {
-    public function __construct(
-        private Auth $auth
-    ) {}
-
     /**
      * @throws Exception
      */
-    public function setUser(): void
+    public function process(): Model|null
     {
-        $user = $this->getUserInstagram();
+        $auth = new Auth;
 
-        if (is_null($user)) {
-            $user = $this->createUser();
-        }
-
-        $this->auth::setProfile([
-            'accessToken' => $user->__get('access_token'),
-            'userId' => getenv('APP_ENV') === 'testing' ? '88888888-4444-4444-4444-121212121212' : $user->id,
-        ]);
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function getUserInstagram(): null|object
-    {
-        return InstagramUser::query()
-            ->where(['instagram_id' => $this->auth::getProfile()->instagramId])
-            ->first();
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function createUser(): Model
-    {
-        $tokenInfos = $this->auth::requestLongLifeToken();
+        $tokenInfos = $auth::requestLongLifeToken();
 
         return InstagramUser::query()->create([
-            'instagram_id' => $this->auth::getProfile()->instagramId,
-            'username' => $this->auth::getProfile()->userName,
-            'media_count' => $this->auth::getProfile()->mediaCount,
+            'instagram_id' => $auth::getProfile()->instagramId,
+            'username' => $auth::getProfile()->userName,
+            'media_count' => $auth::getProfile()->mediaCount,
             'access_token' => $tokenInfos['accessToken'],
             'token_type' => $tokenInfos['tokenType'],
             'expires_in' => $tokenInfos['expiresIn']

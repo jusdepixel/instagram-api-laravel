@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Http\Middleware;
 
-use Jusdepixel\InstagramApiLaravel\Actions\UserCreateAction;
+use Jusdepixel\InstagramApiLaravel\Actions\UserSetAction;
 use Jusdepixel\InstagramApiLaravel\Exceptions\InstagramException;
 use Jusdepixel\InstagramApiLaravel\Instagram\Auth;
 use Closure;
@@ -18,7 +18,7 @@ use Illuminate\Http\Response;
  */
 class Instagram
 {
-    public function handle($request, Closure $next): Response|JsonResponse
+    public function handle($request, Closure $next)//: Response|JsonResponse
     {
         $auth = new Auth();
 
@@ -28,7 +28,7 @@ class Instagram
             );
         } else {
             try {
-                (new UserCreateAction($auth))->setUser();
+                (new UserSetAction)->process();
             } catch (\Exception $e) {
                 return (new InstagramException())->render($e);
             }
