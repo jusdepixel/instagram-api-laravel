@@ -8,10 +8,10 @@ Get your instagram feeds and share them !
 ## Configuration
 #### Setting your Instagram application in .env
 ```
+INSTAGRAM_ROUTES_PREFIX=api
 INSTAGRAM_CLIENT_ID=INSTAGRAM_CLIENT_ID
 INSTAGRAM_CLIENT_SECRET=INSTAGRAM_CLIENT_SECRET
-INSTAGRAM_REQUEST_URI=INSTAGRAM_REQUEST_URI
-INSTAGRAM_ROUTES_PREFIX=api
+INSTAGRAM_REQUEST_URI=INSTAGRAM_REQUEST_URI/INSTAGRAM_ROUTES_PREFIX/auth/code
 ```
 
 ## Installation
@@ -38,11 +38,15 @@ php artisan migrate
 ```
 
 ## Usage
-#### Get your instagram app code first & get token
+#### Get your instagram app code first
 ```
-GET api/init/url
-GET api/auth/login/INSTAGRAM_CODE
+GET /api/init/url
 ```
+#### Copy returned code then get your token with code it
+```
+POST /api/auth/login/INSTAGRAM_CODE
+```
+You are now logged, you could use routes !
 #### Routes
 ```
 See instagram-api-laravel.postman_collection.json
