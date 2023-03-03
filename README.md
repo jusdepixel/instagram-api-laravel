@@ -46,7 +46,7 @@ GET /api/init/url
 ```
 {"code":"INSTAGRAM_CODE"}
 ```
-#### Then, get your token with code it
+#### Then, get your token
 ```
 POST /api/auth/login/INSTAGRAM_CODE
 ```
