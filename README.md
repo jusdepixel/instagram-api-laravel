@@ -42,7 +42,11 @@ php artisan migrate
 ```
 GET /api/init/url
 ```
-#### Copy returned code then get your token with code it
+#### Return code
+```
+{"code":"INSTAGRAM_CODE"}
+```
+#### Then, get your token with code it
 ```
 POST /api/auth/login/INSTAGRAM_CODE
 ```
