@@ -19,47 +19,24 @@ class RefreshMediaJob implements ShouldQueue
     /**
      * @throws Exception
      */
-    public function __invoke()
+    public function __invoke(): void
     {
-        $nbDaysForRefresh = 2;
-        $dateToRefresh = Carbon::now()->subDays($nbDaysForRefresh)->toDateTimeString();
-        $mediasRefresh = [];
-        $instagram = new Instagram();
+        $dateToRefresh = Carbon::now()->subDays(2)->toDateTimeString();
+        $instagram = new Instagram;
 
         $mediasToRefresh = InstagramPost::query()
-            ->select(
-                'instagram_posts.id',
-                'instagram_posts.instagram_id',
-                'instagram_posts.instagram_user_id',
-                'instagram_users.access_token'
-            )
-            ->where(
-                'instagram_posts.updated_at',
-                '<=',
-                $dateToRefresh
-            )
-            ->join(
-                'instagram_users',
-                'instagram_posts.instagram_user_id',
-                '=',
-                'instagram_users.id'
-            )
+            ->select('id', 'instagram_id', 'instagram_user_id')
+            ->with('author')
+            ->where('updated_at', '<=', $dateToRefresh)
             ->get();
 
-        foreach($mediasToRefresh as $media) {
-            $newUrl = $instagram->refreshMedia($media->instagram_id, $media->access_token);
-
-            $media::query()
-                ->where('id', $media->id)
-                ->update([
-                    'media_url' => $newUrl
-                ]);
-
-            $mediasRefresh[$media->id] = $newUrl;
-        }
-
-        foreach($mediasRefresh as $id => $url) {
-            print_r("\nRefresh $id ($url)");
-        }
+        $mediasToRefresh->each(function (InstagramPost $post) use ($instagram) {
+            $post->update([
+                'media_url' => $instagram->refreshMedia(
+                    $post->__get('instagram_id'),
+                    $post->__get('author')->__get('access_token')
+                )
+            ]);
+        });
     }
 }
