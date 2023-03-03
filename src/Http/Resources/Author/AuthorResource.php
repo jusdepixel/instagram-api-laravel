@@ -15,8 +15,8 @@ final class AuthorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'instagram_id' => $this->instagram_id,
-            'username' => $this->username
+            'username' => $this->username,
+            'link' => '/api/users/' . $this->id,
         ];
     }
 }
