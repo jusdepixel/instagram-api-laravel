@@ -18,16 +18,16 @@ class PostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'instagram_id' => $this->instagram_id,
-            'author' => new AuthorResource($this->whenLoaded('author')),
             'caption' => $this->caption,
-            'permalink' => $this->permalink,
-            'timestamp' => $this->timestamp,
             'media_type' => $this->media_type,
             'media_url' => $this->media_url,
             'thumbnail_url' => $this->thumbnail_url,
+            'timestamp' => $this->timestamp,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'author' => new AuthorResource($this->whenLoaded('author')),
+            'permalink' => $this->permalink,
+            'link' => '/api/posts/' . $this->id,
         ];
     }
 }
