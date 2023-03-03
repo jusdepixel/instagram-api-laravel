@@ -74,10 +74,12 @@ Route:: middleware([
 
         Route::prefix('/users')->group(static function(): void {
 
-            Route::get('/', \Jusdepixel\InstagramApiLaravel\Http\Controllers\Users\AllController::class)
+            Route::get('/',
+                \Jusdepixel\InstagramApiLaravel\Http\Controllers\Users\AllController::class)
                 ->name('user@all');
 
-            Route::get('/{user}', \Jusdepixel\InstagramApiLaravel\Http\Controllers\Users\OneController::class)
+            Route::get('/{user}',
+                \Jusdepixel\InstagramApiLaravel\Http\Controllers\Users\OneController::class)
                 ->name('user@one');
         });
 
@@ -85,10 +87,12 @@ Route:: middleware([
             ->middleware(\Jusdepixel\InstagramApiLaravel\Http\Middleware\Instagram::class)
             ->group(static function(): void {
 
-                Route::put('/token',\Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\TokenController::class)
+                Route::put('/token',
+                    \Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\TokenController::class)
                     ->name('refresh@token');
 
-                Route::put('/post/{instagramId}',\Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\PostController::class)
+                Route::put('/post/{instagramId}',
+                    \Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\PostController::class)
                     ->name('refresh@post');
             });
     });
