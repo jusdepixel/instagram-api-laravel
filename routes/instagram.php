@@ -15,17 +15,17 @@ Route:: middleware([
 
         Route::prefix('/auth')->group(static function(): void {
 
-            Route::get('/code/{code}',
+            Route::get('/code',
                 \Jusdepixel\InstagramApiLaravel\Http\Controllers\Auth\CodeController::class)
                 ->name('auth@code');
-
-            Route::get('/login/{code}',
-                \Jusdepixel\InstagramApiLaravel\Http\Controllers\Auth\LoginController::class)
-                ->name('auth@login');
 
             Route::get('/profile',
                 \Jusdepixel\InstagramApiLaravel\Http\Controllers\Auth\ProfileController::class)
                 ->name('auth@profile');
+
+            Route::post('/login/{code}',
+                \Jusdepixel\InstagramApiLaravel\Http\Controllers\Auth\LoginController::class)
+                ->name('auth@login');
 
             Route::post('/logout',
                 \Jusdepixel\InstagramApiLaravel\Http\Controllers\Auth\LogoutController::class)
