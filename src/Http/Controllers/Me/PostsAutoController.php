@@ -16,10 +16,11 @@ class PostsAutoController extends Controller
     {
         $user = InstagramUser::query()->find(self::$instagram::getProfile()->user_id);
         $user->update(['posts_auto' => !$user->__get('posts_auto')]);
+        $user = $user->find(self::$instagram::getProfile()->user_id);
 
         return response([
-            'message' => !$user->__get('posts_auto') ? 'Automatic posts activated' : 'Automatic posts desactivated',
-            'profile' => self::$instagram::setProfile(['posts_auto' => !$user->__get('posts_auto')])
+            'message' => $user->__get('posts_auto') ? 'Automatic posts activated' : 'Automatic posts desactivated',
+            'profile' => self::$instagram::setProfile(['posts_auto' => $user->__get('posts_auto')])
         ]);
     }
 }
