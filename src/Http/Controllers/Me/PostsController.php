@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Http\Controllers\Me;
 
+use Exception;
 use Jusdepixel\InstagramApiLaravel\Exceptions\InstagramException;
 use Jusdepixel\InstagramApiLaravel\Http\Resources\Me\MePostCollection;
 use Jusdepixel\InstagramApiLaravel\Instagram\Controller;
@@ -15,7 +16,7 @@ final class PostsController extends Controller
     {
         try {
             return self::$instagram::getPosts();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return (new InstagramException())->render($e);
         }
     }
