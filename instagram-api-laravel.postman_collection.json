@@ -2870,6 +2870,24 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "/me/posts-auto",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/me/posts-auto",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"me",
+								"posts-auto"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
