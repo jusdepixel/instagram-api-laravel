@@ -22,10 +22,8 @@ final class UserSetAction
         }
 
         $auth::setProfile([
-            'accessToken' => $user->__get('access_token'),
-            'userId' => getenv('APP_ENV') === 'testing' ?
-                '88888888-4444-4444-4444-121212121212' :
-                $user->__get('id'),
+            'access_token' => $user->__get('access_token'),
+            'user_id' => $user->__get('id'),
         ]);
     }
 }
