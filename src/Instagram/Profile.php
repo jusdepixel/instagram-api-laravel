@@ -9,37 +9,19 @@ use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Cache;
 
-/**
- * Set/Get profile Instagram user
- * @package Jusdepixel\InstagramApiLaravel\Instagram\Profile
- */
 class Profile extends Init
 {
-    private static bool $test = true;
-
     public static function getProfile(): ProfileDataObject
     {
-        if (getenv('APP_ENV') === 'testing') {
-            if (self::$test === true) {
-                self::$test = false;
-                self::requestProfile();
-            }
-        }
-
         return self::getSession();
     }
 
-    /**
-     * @throws Exception
-     */
-    public static function setProfile($profile): ProfileDataObject
+    public static function setProfile(array $profile): ProfileDataObject
     {
-        return self::setSession(
-            array_merge(
-                (array) self::getProfile(),
-                (array) $profile
-            )
-        );
+        return self::setSession([
+            ...self::getProfile()->toArray(),
+            ...$profile
+        ]);
     }
 
     /**
@@ -48,13 +30,13 @@ class Profile extends Init
     public static function requestProfile(): array|ProfileDataObject
     {
         try {
-            $cacheKey = "my-profile-" . self::getProfile()->instagramId;
+            $cacheKey = "my-profile-" . self::getProfile()->instagram_id;
 
             if (!Cache::has($cacheKey)) {
 
                 $params = [
                     'query' => [
-                        'access_token' => self::getProfile()->accessToken,
+                        'access_token' => self::getProfile()->access_token,
                         'fields' => 'account_type,media_count,username'
                     ]
                 ];
@@ -72,18 +54,11 @@ class Profile extends Init
             $result = Cache::get($cacheKey);
 
             return self::setProfile([
-                'userName' => $result->username,
-                'mediaCount' => $result->media_count,
+                'username' => $result->username,
+                'media_count' => $result->media_count,
             ]);
 
-        } catch (GuzzleException $e) {
-            if (getenv('APP_ENV') === 'testing') {
-                return self::setProfile([
-                    'userName' => 'userName',
-                    'mediaCount' => 42,
-                ]);
-            }
-
+        } catch (GuzzleException) {
             throw new Exception('BAD_TOKEN_OR_USAGE', 400);
         }
     }
