@@ -7,9 +7,6 @@ namespace Jusdepixel\InstagramApiLaravel\Http\Resources\Post;
 use Jusdepixel\InstagramApiLaravel\Http\Resources\Author\AuthorResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @package Jusdepixel\InstagramApiLaravel\Http\Resources\Post\PostResource
- */
 class PostResource extends JsonResource
 {
     public static $wrap = 'post';

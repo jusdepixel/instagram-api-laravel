@@ -6,9 +6,6 @@ namespace Jusdepixel\InstagramApiLaravel\Http\Resources\User;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-/**
- * @package Jusdepixel\InstagramApiLaravel\Http\Resource\User\UserCollection
- */
 class UserCollection extends ResourceCollection
 {
     public $collects = UserResource::class;

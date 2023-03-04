@@ -6,9 +6,6 @@ namespace Jusdepixel\InstagramApiLaravel\Http\Resources\Author;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @package Jusdepixel\InstagramApiLaravel\Http\Resources\Author\AuthorResource
- */
 final class AuthorResource extends JsonResource
 {
     public function toArray($request): array

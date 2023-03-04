@@ -6,9 +6,6 @@ namespace Jusdepixel\InstagramApiLaravel\Http\Resources\Me;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-/**
- * @package Jusdepixel\InstagramApiLaravell\Http\Resources\Me\MePostCollection
- */
 class MePostCollection extends ResourceCollection
 {
     public $collects = MePostResource::class;

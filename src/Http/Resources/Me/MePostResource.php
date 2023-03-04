@@ -8,9 +8,6 @@ use Jusdepixel\InstagramApiLaravel\Instagram\Auth;
 use Jusdepixel\InstagramApiLaravel\Models\InstagramPost;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @package Jusdepixel\InstagramApiLaravell\Http\Resources\Me\MePostResource
- */
 class MePostResource extends JsonResource
 {
     public static $wrap = 'post';
