@@ -52,6 +52,10 @@ Route:: middleware([
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostCreateController::class)
                     ->name('me@post.create');
 
+                Route::patch('/posts-auto',
+                    \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostsAutoController::class)
+                    ->name('me@post.auto');
+
                 Route::delete('/posts/{id}',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostDeleteController::class)
                     ->name('me@post.delete');
