@@ -47,6 +47,6 @@ class InstagramException extends Exception
             return $this->myResponse("Instagram API usage cap reached, please wait", 403);
         }
 
-        return $this->myResponse($message, 403);
+        return $this->myResponse($message, $code);
     }
 }
