@@ -24,6 +24,8 @@ final class UserSetAction
         $auth::setProfile([
             'access_token' => $user->__get('access_token'),
             'user_id' => $user->__get('id'),
+            'expires_in' => $user->__get('expires_in'),
+            'posts_auto' => $user->__get('posts_auto'),
         ]);
     }
 }

@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramUserFactory;
 
-/**
- * @package Jusdepixel\InstagramApiLaravel\Models\InstagramUser
- * @factory Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramUserFactory
- */
 final class InstagramUser extends Model
 {
     use HasFactory;
@@ -30,17 +28,35 @@ final class InstagramUser extends Model
         'posts_auto',
     ];
 
-    protected int $instagram_id;
-    protected string $username;
-    protected int $media_count;
-    protected string $access_token;
-    protected string $token_type;
-    protected string $expires_in;
-    protected bool $posts_auto;
-
     public function posts(): HasMany
     {
         return $this->HasMany(InstagramPost::class);
+    }
+
+    public function postsAuto(): Attribute
+    {
+        return Attribute::make(
+            get: fn (int $value) => (bool) $value
+        );
+    }
+
+    public function expiresInHuman(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->getExpiresInHuman($this->expires_in)
+        );
+    }
+
+    private function getExpiresInHuman(int $expiresIn): string
+    {
+        $startDate = Carbon::createFromTimestamp(time());
+        $endDate = Carbon::createFromTimestamp(time() + $expiresIn);
+
+        $days = $startDate->diffInDays($endDate);
+        $hours = $startDate->copy()->addDays($days)->diffInHours($endDate);
+        $minutes = $startDate->copy()->addDays($days)->addHours($hours)->diffInMinutes($endDate);
+
+        return "$days days, $hours hours and $minutes minutes";
     }
 
     protected static function newFactory(): Factory
