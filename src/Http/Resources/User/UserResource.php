@@ -16,9 +16,8 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'username' => $this->username,
-            'media_count' => $this->media_count,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'instagram_posts_count' => $this->media_count,
+            'shared_posts_count' => $this->shared_count,
             'link' => '/api/users/' . $this->id,
             'posts' => new PostCollection($this->whenLoaded('posts')),
         ];

@@ -47,6 +47,13 @@ final class InstagramUser extends Model
         );
     }
 
+    public function sharedCount(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => InstagramPost::query()->where('instagram_user_id', $this->id)->count()
+        );
+    }
+
     private function getExpiresInHuman(int $expiresIn): string
     {
         $startDate = Carbon::createFromTimestamp(time());
