@@ -14,7 +14,7 @@ final class DeleteController extends Controller
     {
         if ((new UserDeleteAction)->process()) {
             return response([
-                'message' => 'User has been deleted'
+                'message' => 'User and his posts has been deleted'
             ], 204);
         }
 

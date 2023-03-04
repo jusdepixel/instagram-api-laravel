@@ -12,7 +12,7 @@ final class AllController
     public function __invoke(): PostCollection
     {
         return new PostCollection(
-             InstagramPost::query()->with('instagram_user')->get()
+             InstagramPost::with('instagram_user')->get()
         );
     }
 }
