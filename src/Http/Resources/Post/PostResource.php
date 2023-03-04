@@ -21,8 +21,7 @@ class PostResource extends JsonResource
             'thumbnail_url' => $this->thumbnail_url,
             'timestamp' => $this->timestamp,
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'author' => new AuthorResource($this->whenLoaded('author')),
+            'author' => new AuthorResource($this->whenLoaded('instagram_user')),
             'permalink' => $this->permalink,
             'link' => '/api/posts/' . $this->id,
         ];

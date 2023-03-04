@@ -15,9 +15,9 @@ class PostsAutoController extends Controller
      */
     public function __invoke(): Response
     {
-        $user = InstagramUser::query()->find(self::$instagram::getProfile()->user_id);
+        $user = InstagramUser::query()->find(self::$instagram::getProfile()->instagram_user_id);
         $user->update(['posts_auto' => !$user->__get('posts_auto')]);
-        $user = $user->find(self::$instagram::getProfile()->user_id);
+        $user = $user->find(self::$instagram::getProfile()->instagram_user_id);
         self::$instagram::setProfile(['posts_auto' => $user->__get('posts_auto')]);
 
         return response([

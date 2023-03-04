@@ -38,7 +38,7 @@ class ProfileTest extends Instagram
                 ->where('is_authenticated', true)
                 ->where('instagram_id', 123456789)
                 ->where('media_count', 42)
-                ->where('user_id', '88888888-4444-4444-4444-121212121212')
+                ->where('instagram_user_id', '88888888-4444-4444-4444-121212121212')
                 ->where('access_token', 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA')
                 ->where('expires_in', 86400)
                 ->where('posts_auto', false)

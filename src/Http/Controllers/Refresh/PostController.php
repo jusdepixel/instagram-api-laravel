@@ -20,7 +20,7 @@ final class PostController extends Controller
         try {
             $post = InstagramPost::query()->where([
                 'instagram_id' => $instagram_id,
-                'instagram_user_id' => self::$instagram::getProfile()->user_id,
+                'instagram_user_id' => self::$instagram::getProfile()->instagram_user_id,
             ]);
 
             $post->update([

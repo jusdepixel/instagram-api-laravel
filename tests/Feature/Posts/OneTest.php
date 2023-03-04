@@ -43,7 +43,7 @@ class OneTest extends Instagram
                     ->where('timestamp', 1677267776)
                     ->where('created_at', '2023-02-24T19:42:56.000000Z')
                     ->where('updated_at', '2023-02-24T19:42:56.000000Z')
-                    ->where('author', [
+                    ->where('instagram_user', [
                         'id' => '88888888-4444-4444-4444-121212121212',
                         'username' => 'username',
                         'link' => '/api/users/88888888-4444-4444-4444-121212121212',

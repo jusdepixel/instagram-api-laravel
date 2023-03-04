@@ -12,7 +12,7 @@ final class OneController
 {
     public function __invoke(string $id): Response|PostResource
     {
-        if ($post = InstagramPost::query()->with('author')->find($id)) {
+        if ($post = InstagramPost::query()->with('instagram_user')->find($id)) {
             return new PostResource($post);
         }
 

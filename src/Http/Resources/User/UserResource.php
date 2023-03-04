@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'instagram_posts_count' => $this->media_count,
             'shared_posts_count' => $this->shared_count,
             'link' => '/api/users/' . $this->id,
-            'posts' => new PostCollection($this->whenLoaded('posts')),
+            'posts' => new PostCollection($this->whenLoaded('instagram_posts')),
         ];
     }
 }

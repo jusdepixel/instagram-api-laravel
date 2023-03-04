@@ -22,7 +22,7 @@ final class TokenController extends Controller
         ]);
 
         InstagramUser::query()
-            ->where('id', self::$instagram::getProfile()->user_id)
+            ->where('id', self::$instagram::getProfile()->instagram_user_id)
             ->update([
                 'access_token' => $profile->access_token,
                 'expires_in' => $profile->expires_in,

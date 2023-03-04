@@ -6,12 +6,10 @@ namespace Jusdepixel\InstagramApiLaravel\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramUserFactory;
 
 final class InstagramUser extends Model
 {
@@ -25,10 +23,10 @@ final class InstagramUser extends Model
         'media_count',
         'token_type',
         'expires_in',
-        'posts_auto',
+        'posts_auto'
     ];
 
-    public function posts(): HasMany
+    public function instagram_posts(): HasMany
     {
         return $this->HasMany(InstagramPost::class);
     }
@@ -64,10 +62,5 @@ final class InstagramUser extends Model
         $minutes = $startDate->copy()->addDays($days)->addHours($hours)->diffInMinutes($endDate);
 
         return "$days days, $hours hours and $minutes minutes";
-    }
-
-    protected static function newFactory(): Factory
-    {
-        return InstagramUserFactory::new();
     }
 }

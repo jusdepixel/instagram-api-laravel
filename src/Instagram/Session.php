@@ -14,7 +14,7 @@ class Session
         'media_count' => null,
         'is_authenticated' => false,
         'instagram_id' => null,
-        'user_id' => null,
+        'instagram_user_id' => null,
         'access_token' => null,
         'expires_in' => null,
         'posts_auto' => false,

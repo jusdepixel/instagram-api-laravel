@@ -12,7 +12,6 @@ return new class extends Migration
     {
         Schema::create('instagram_posts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignId('instagram_user_id');
             $table->integer('instagram_id')->unique();
             $table->timestamp('timestamp');
             $table->timestamp('caption')->nullable();
@@ -21,6 +20,7 @@ return new class extends Migration
             $table->string('media_url');
             $table->string('thumbnail_url')->nullable();
             $table->timestamps();
+            $table->foreignId('instagram_user_id')->constrained()->cascadeOnDelete();
         });
     }
 

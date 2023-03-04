@@ -20,7 +20,7 @@ abstract class Instagram extends TestCase
             'is_authenticated' => true,
             'instagram_id' => 123456789,
             'media_count' => 42,
-            'user_id' => '88888888-4444-4444-4444-121212121212',
+            'instagram_user_id' => '88888888-4444-4444-4444-121212121212',
             'access_token' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA',
             'expires_in' => 86400,
             'expires_in_human' => '59 days, 10 hours and 52 minutes',
