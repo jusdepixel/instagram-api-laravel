@@ -28,7 +28,7 @@ final class ProfileDataObject
             media_count: $profile->media_count,
             access_token: $profile->access_token,
             expires_in: $profile->expires_in,
-            posts_auto: $profile->posts_auto,
+            posts_auto: (bool) $profile->posts_auto,
         );
     }
 
