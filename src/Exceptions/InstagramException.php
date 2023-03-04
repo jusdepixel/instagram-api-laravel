@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Exceptions;
 
+use Illuminate\Database\QueryException;
 use Jusdepixel\InstagramApiLaravel\Instagram\Auth;
 use Exception;
 use Illuminate\Http\Response;
@@ -13,13 +14,20 @@ use Illuminate\Http\Response;
  */
 class InstagramException extends Exception
 {
-    private function myResponse(string $message, int $code): Response
+    private function myResponse(string $message, int $code, ?array $traces = null): Response
     {
         $response['message'] = $message;
 
         if (getenv('APP_ENV') !== 'testing') {
-            $response['authorizeUrl'] = Auth::authorizeUrl();
-            $response['profile'] = Auth::getProfile();
+            $profile = Auth::getProfile();
+
+            $profile->is_authenticated ?
+                $response['profile'] = $profile :
+                $response['authorizeUrl'] = Auth::authorizeUrl();
+
+            if ($traces) {
+                $response['traces'] = $traces;
+            }
         }
 
         return response($response, $code);
@@ -47,6 +55,12 @@ class InstagramException extends Exception
             return $this->myResponse("Instagram API usage cap reached, please wait", 403);
         }
 
-        return $this->myResponse($message, $code);
+        if ($e instanceof QueryException) {
+            return $this->myResponse($message, 500);
+        }
+
+        return $code === 0 ?
+            $this->myResponse($message, 500, $e->getTrace()) :
+            $this->myResponse($message, $code);
     }
 }
