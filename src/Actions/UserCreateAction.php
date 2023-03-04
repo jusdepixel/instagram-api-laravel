@@ -16,17 +16,8 @@ final class UserCreateAction
      */
     public function process(): Model|null
     {
-        $auth = new Auth;
-
-        $tokenInfos = $auth::requestLongLifeToken();
-
-        return InstagramUser::query()->create([
-            'instagram_id' => $auth::getProfile()->instagramId,
-            'username' => $auth::getProfile()->userName,
-            'media_count' => $auth::getProfile()->mediaCount,
-            'access_token' => $tokenInfos['accessToken'],
-            'token_type' => $tokenInfos['tokenType'],
-            'expires_in' => $tokenInfos['expiresIn']
-        ]);
+        return InstagramUser::query()->create(
+            (new Auth)::requestLongLifeToken()->toArray()
+        );
     }
 }
