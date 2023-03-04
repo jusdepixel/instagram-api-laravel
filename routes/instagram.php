@@ -48,7 +48,7 @@ Route:: middleware([
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostController::class)
                     ->name('me@post');
 
-                Route::post('/posts/{instagramId}',
+                Route::post('/posts/{instagram_id}',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Me\PostCreateController::class)
                     ->name('me@post.create');
 
@@ -91,7 +91,7 @@ Route:: middleware([
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\TokenController::class)
                     ->name('refresh@token');
 
-                Route::put('/post/{instagramId}',
+                Route::put('/post/{instagram_id}',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\PostController::class)
                     ->name('refresh@post');
             });

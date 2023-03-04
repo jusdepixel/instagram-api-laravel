@@ -16,9 +16,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->integer('media_count')->nullable();
             $table->string('access_token')->nullable();
-            $table->string('token_type')->nullable();
             $table->integer('expires_in')->nullable();
-            $table->integer('updated_time')->nullable();
             $table->timestamps();
         });
     }

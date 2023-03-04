@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Session as IlluminateSession;
 class Session
 {
     public static array $session = [
-        'userName' => 'Anonymous',
-        'mediaCount' => 0,
-        'isAuthenticated' => false,
-        'instagramId' => null,
-        'userId' => null,
-        'accessToken' => null,
+        'username' => 'Anonymous',
+        'media_count' => null,
+        'is_authenticated' => false,
+        'instagram_id' => null,
+        'user_id' => null,
+        'access_token' => null,
+        'expires_in' => null,
     ];
 
     protected static function setSession(array $session): ProfileDataObject

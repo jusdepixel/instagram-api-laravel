@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Http\Controllers\Auth;
 
+use Exception;
 use Jusdepixel\InstagramApiLaravel\Actions\UserCacheAction;
 use Jusdepixel\InstagramApiLaravel\Exceptions\InstagramException;
 use Jusdepixel\InstagramApiLaravel\Instagram\Controller;
@@ -19,10 +20,10 @@ final class LoginController extends Controller
             new UserCacheAction();
 
             return [
-                'messsage' => $profile->userName . ' is connected to Instagram',
+                'messsage' => $profile->username . ' is connected to Instagram',
                 'profile' => $profile
             ];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return (new InstagramException())->render($e);
         }
     }

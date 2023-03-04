@@ -23,7 +23,10 @@ class OneTest extends Instagram
         $this->seed(InstagramSeeder::class);
         $response = $this->get('/api/users/pas-de-uuid');
 
-        $response->assertStatus(403);
+        $response->assertStatus(404);
+        $response->assertJson(fn (AssertableJson $json) =>
+            $json->where('message', 'This user does not exist or no longer exists')
+        );
     }
 
     public function test_response_success()
@@ -36,7 +39,7 @@ class OneTest extends Instagram
             $json->has('user', fn ($json) =>
                 $json
                     ->where('id', '88888888-4444-4444-4444-121212121212')
-                    ->where('username', 'userName')
+                    ->where('username', 'username')
                     ->where('media_count', 42)
                     ->where('created_at', '2023-02-24T19:42:56.000000Z')
                     ->where('updated_at', '2023-02-24T19:42:56.000000Z')

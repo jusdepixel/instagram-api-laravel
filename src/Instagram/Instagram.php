@@ -24,12 +24,12 @@ final class Instagram extends Auth
     public static function getPosts(): MePostCollection
     {
         try {
-            $cacheKey = "my-posts-" . self::getProfile()->instagramId;
+            $cacheKey = "my-posts-" . self::getProfile()->instagram_id;
 
             if (!Cache::has($cacheKey)) {
                 $params = [
                     'query' => [
-                        'access_token' => self::getProfile()->accessToken,
+                        'access_token' => self::getProfile()->access_token,
                         'fields' => self::FIELDS
                     ]
                 ];
@@ -66,7 +66,7 @@ final class Instagram extends Auth
             if (!Cache::has($cacheKey)) {
                 $params = [
                     'query' => [
-                        'access_token' => self::getProfile()->accessToken,
+                        'access_token' => self::getProfile()->access_token,
                         'fields' => self::FIELDS
                     ]
                 ];
@@ -91,7 +91,7 @@ final class Instagram extends Auth
                     'media_type' => 'IMAGE',
                     'media_url' => 'http://media.url/12345678910',
                     'permalink' => 'https://perma.link/12345678910',
-                    'username' => 'userName',
+                    'username' => 'username',
                     'timestamp' => 1677267776,
                 ]);
             }
@@ -118,7 +118,7 @@ final class Instagram extends Auth
     {
         try {
             if ($token === null) {
-                $token = self::getProfile()->accessToken;
+                $token = self::getProfile()->access_token;
             }
 
             $params = [

@@ -38,7 +38,7 @@ class LogoutTest extends Instagram
 
         $response->assertJson(fn (AssertableJson $json) =>
             $json
-                ->where('message', 'userName got disconnected from Instagram')
+                ->where('message', 'username got disconnected from Instagram')
                 ->where('profile', (array) self::$instagram::setProfile(self::$instagram::$session))
         );
     }
@@ -49,7 +49,7 @@ class LogoutTest extends Instagram
         $response = $this->post('/api/auth/logout');
 
         $expected = json_encode([
-            'message' => "userName got disconnected from Instagram",
+            'message' => "username got disconnected from Instagram",
             'profile' => $fakeProfile
         ]);
 

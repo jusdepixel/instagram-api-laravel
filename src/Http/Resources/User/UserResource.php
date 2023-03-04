@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Jusdepixel\InstagramApiLaravel\Http\Resources\User;
 
 use Jusdepixel\InstagramApiLaravel\Http\Resources\Post\PostCollection;
-use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**

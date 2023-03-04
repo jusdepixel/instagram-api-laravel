@@ -51,9 +51,9 @@ class Auth extends Profile
             $result = json_decode($response->getBody()->getContents());
 
             self::setProfile([
-                'accessToken' => $result->access_token,
-                'instagramId' => $result->user_id,
-                'isAuthenticated' => true
+                'access_token' => $result->access_token,
+                'instagram_id' => $result->user_id,
+                'is_authenticated' => true
             ]);
 
             return self::requestProfile();
@@ -66,12 +66,12 @@ class Auth extends Profile
     /**
      * @throws Exception
      */
-    public static function requestLongLifeToken(): array
+    public static function requestLongLifeToken(): ProfileDataObject
     {
         try {
             $params = [
                 'query' => [
-                    'access_token' => self::getProfile()->accessToken,
+                    'access_token' => self::getProfile()->access_token,
                     'grant_type' => 'ig_exchange_token',
                     'client_secret' => self::$clientSecret,
                 ]
@@ -85,27 +85,11 @@ class Auth extends Profile
 
             $result = json_decode($response->getBody()->getContents());
 
-            self::setProfile([
-                'accessToken' => $result->access_token,
-                'tokenType' => $result->token_type,
-                'expiresIn' => $result->expires_in,
+            return self::setProfile([
+                'access_token' => $result->access_token,
+                'expires_in' => $result->expires_in,
             ]);
-
-            return [
-                'accessToken' => $result->access_token,
-                'tokenType' => $result->token_type,
-                'expiresIn' => $result->expires_in,
-            ];
-
         } catch (GuzzleException $e) {
-            if (getenv('APP_ENV') === 'testing') {
-                return [
-                    'accessToken' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA',
-                    'tokenType' => 'Bearer',
-                    'expiresIn' => 86400,
-                ];
-            }
-
             throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());
         }
     }
@@ -117,7 +101,7 @@ class Auth extends Profile
     {
         try {
             if ($token === null) {
-                $token = self::getProfile()->accessToken;
+                $token = self::getProfile()->access_token;
             }
 
             $params = [
@@ -133,7 +117,12 @@ class Auth extends Profile
                 $params
             );
 
-            return json_decode($response->getBody()->getContents());
+            $result = json_decode($response->getBody()->getContents());
+
+            return self::setProfile([
+                'access_token' => $result->access_token,
+                'expires_in' => $result->expires_in,
+            ]);
 
         } catch (GuzzleException $e) {
             throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());

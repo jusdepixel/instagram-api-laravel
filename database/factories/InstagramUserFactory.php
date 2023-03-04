@@ -19,12 +19,10 @@ class InstagramUserFactory extends Factory
         return [
             'id' => '88888888-4444-4444-4444-121212121212',
             'instagram_id' => 123456789,
-            'username' => "userName",
+            'username' => "username",
             'media_count' => 42,
             'access_token' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA',
-            'token_type' => 'Bearer',
             'expires_in' => 1677267776,
-            'updated_time' => 1677267776,
             'created_at' => '2023-02-24T19:42:56.000000Z',
             'updated_at' => '2023-02-24T19:42:56.000000Z',
         ];

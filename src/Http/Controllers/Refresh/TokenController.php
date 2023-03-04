@@ -21,13 +21,14 @@ final class TokenController extends Controller
         ]);
 
         InstagramUser::query()
-            ->where('id', self::$instagram::getProfile()->userId)
+            ->where('id', self::$instagram::getProfile()->user_id)
             ->update([
-                'access_token' => $profile->accessToken
+                'access_token' => $profile->access_token
             ]);
 
         return response([
-            'access_token' => $profile->accessToken
+            'message' => 'Your token has been updated',
+            'access_token' => $profile->access_token
         ]);
     }
 }

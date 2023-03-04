@@ -13,7 +13,7 @@ final class UserGetAction
     public function process(): Model|null
     {
         return InstagramUser::query()
-            ->where(['instagram_id' => (new Auth)::getProfile()->instagramId])
+            ->where(['instagram_id' => (new Auth)::getProfile()->instagram_id])
             ->first();
     }
 }

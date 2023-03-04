@@ -18,7 +18,7 @@ class Instagram
     {
         $auth = new Auth;
 
-        if ($auth::getProfile()->isAuthenticated === false) {
+        if ($auth::getProfile()->is_authenticated === false) {
             return (new InstagramException())->render(
                 new Exception('MIDDLEWARE_INSTAGRAM', 403)
             );

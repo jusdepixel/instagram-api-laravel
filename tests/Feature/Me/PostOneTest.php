@@ -47,7 +47,7 @@ class PostOneTest extends Instagram
                         ->where('media_type', 'IMAGE')
                         ->where('media_url', 'http://media.url/12345678910')
                         ->where('permalink', 'https://perma.link/12345678910')
-                        ->where('username', 'userName')
+                        ->where('username', 'username')
                         ->where('timestamp', 1677267776)
                     )
         );

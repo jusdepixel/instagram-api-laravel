@@ -23,7 +23,7 @@ class MePostResource extends JsonResource
             'id' => $post?->id,
             'caption' => $this->caption,
             'instagram_id' => $this->id,
-            'instagram_user_id' => (new Auth())::getProfile()->userId,
+            'instagram_user_id' => (new Auth())::getProfile()->user_id,
             'media_type' => $this->media_type,
             'media_url' => $this->media_url,
             'permalink' => $this->permalink,

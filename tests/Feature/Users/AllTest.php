@@ -31,7 +31,7 @@ class AllTest extends Instagram
                 ->has('users.data.0', fn ($json) =>
                     $json
                         ->where('id', '88888888-4444-4444-4444-121212121212')
-                        ->where('username', 'userName')
+                        ->where('username', 'username')
                         ->where('media_count', 42)
                         ->where('created_at', '2023-02-24T19:42:56.000000Z')
                         ->where('updated_at', '2023-02-24T19:42:56.000000Z')

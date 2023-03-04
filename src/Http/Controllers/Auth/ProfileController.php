@@ -10,8 +10,6 @@ final class ProfileController extends Controller
 {
     public function __invoke(): array
     {
-        return [
-            'profile' => self::$instagram::getProfile()
-        ];
+        return self::$instagram::getProfile()->toArray();
     }
 }

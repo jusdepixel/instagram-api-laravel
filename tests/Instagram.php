@@ -16,12 +16,14 @@ abstract class Instagram extends TestCase
     protected static function fakeProfile(): ProfileDataObject
     {
         return self::$instagram::setProfile([
-            'userName' => 'userName',
-            'isAuthenticated' => true,
-            'instagramId' => 123456789,
-            'mediaCount' => 42,
-            'userId' => '88888888-4444-4444-4444-121212121212',
-            'accessToken' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA'
+            'username' => 'username',
+            'is_authenticated' => true,
+            'instagram_id' => 123456789,
+            'media_count' => 42,
+            'user_id' => '88888888-4444-4444-4444-121212121212',
+            'access_token' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA',
+            'expires_in' => 86400
+
         ]);
     }
 
@@ -33,7 +35,7 @@ abstract class Instagram extends TestCase
             'media_type' => 'IMAGE',
             'media_url' => 'http://media.url/12345678910',
             'permalink' => 'https://perma.link/12345678910',
-            'username' => 'userName',
+            'username' => 'username',
             'timestamp' => 1677267776,
         ];
 

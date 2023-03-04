@@ -39,7 +39,7 @@ class AllTest extends Instagram
                         ->where('updated_at', '2023-02-24T19:42:56.000000Z')
                         ->where('author', [
                             'id' => '88888888-4444-4444-4444-121212121212',
-                            'username' => 'userName',
+                            'username' => 'username',
                             'link' => '/api/users/88888888-4444-4444-4444-121212121212',
                         ])
                         ->where('permalink', 'https://perma.link/123456789')

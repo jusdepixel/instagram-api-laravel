@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Auth;
 
+use Exception;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
@@ -23,21 +24,24 @@ class ProfileTest extends Instagram
         $response->assertStatus(405);
     }
 
+    /**
+     * @throws Exception
+     */
     public function test_profile_response_success()
     {
-        self::$instagram::setProfile(self::fakeProfile());
+        self::$instagram::setProfile((array) self::fakeProfile());
         $response = $this->get('/api/auth/profile');
 
         $response->assertJson(fn (AssertableJson $json) =>
-            $json->has('profile', fn ($json) =>
-                $json
-                    ->where('userName', 'userName')
-                    ->where('isAuthenticated', true)
-                    ->where('instagramId', 123456789)
-                    ->where('mediaCount', 42)
-                    ->where('userId', '88888888-4444-4444-4444-121212121212')
-                    ->where('accessToken', 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA')
-            )
+            $json
+                ->where('username', 'username')
+                ->where('is_authenticated', true)
+                ->where('instagram_id', 123456789)
+                ->where('media_count', 42)
+                ->where('user_id', '88888888-4444-4444-4444-121212121212')
+                ->where('access_token', 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA')
+                ->where('expires_in', 86400)
+
         );
     }
 
