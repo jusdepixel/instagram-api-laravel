@@ -25,9 +25,9 @@ class AllTest extends Instagram
 
         $response->assertJson(fn (AssertableJson $json) =>
             $json
-                ->has('posts')
-                ->has('posts.count')
-                ->has('posts.data.0', fn ($json) =>
+                ->has('links')
+                ->has('count')
+                ->has('posts.0', fn ($json) =>
                     $json
                         ->where('id', 'bac04411-9999-4cd2-b9d9-06ad4f9c1c62')
                         ->where('caption', 'Caption Post !')
@@ -36,8 +36,7 @@ class AllTest extends Instagram
                         ->where('thumbnail_url', 'http://thumbnail.url/12345678910')
                         ->where('timestamp', 1677267776)
                         ->where('created_at', '2023-02-24T19:42:56.000000Z')
-                        ->where('updated_at', '2023-02-24T19:42:56.000000Z')
-                        ->where('instagram_user', [
+                        ->where('author', [
                             'id' => '88888888-4444-4444-4444-121212121212',
                             'username' => 'username',
                             'link' => '/api/users/88888888-4444-4444-4444-121212121212',

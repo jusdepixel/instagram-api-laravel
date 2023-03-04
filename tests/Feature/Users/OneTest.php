@@ -40,13 +40,12 @@ class OneTest extends Instagram
                 $json
                     ->where('id', '88888888-4444-4444-4444-121212121212')
                     ->where('username', 'username')
-                    ->where('media_count', 42)
-                    ->where('created_at', '2023-02-24T19:42:56.000000Z')
-                    ->where('updated_at', '2023-02-24T19:42:56.000000Z')
+                    ->where('instagram_posts_count', 42)
+                    ->where('shared_posts_count', 1)
                     ->where('link', '/api/users/88888888-4444-4444-4444-121212121212')
                     ->where('posts', [
                         'count' => 1,
-                        'data' => [0 => [
+                        'posts' => [0 => [
                             'id' => 'bac04411-9999-4cd2-b9d9-06ad4f9c1c62',
                             'caption' => 'Caption Post !',
                             'media_type' => 'IMAGE',
@@ -54,7 +53,6 @@ class OneTest extends Instagram
                             'thumbnail_url' => 'http://thumbnail.url/12345678910',
                             'timestamp' => 1677267776,
                             'created_at' => '2023-02-24T19:42:56.000000Z',
-                            'updated_at' => '2023-02-24T19:42:56.000000Z',
                             'permalink' => 'https://perma.link/123456789',
                             'link' => '/api/posts/bac04411-9999-4cd2-b9d9-06ad4f9c1c62'
                         ]],
@@ -64,13 +62,5 @@ class OneTest extends Instagram
                     ])
             )
         );
-    }
-
-    private function expires(): int
-    {
-        $expiresAt = 1677267776 + 1677267776;
-        $diff = $expiresAt - time();
-
-        return (int) round($diff / 86400);
     }
 }

@@ -25,26 +25,16 @@ class AllTest extends Instagram
 
         $response->assertJson(fn (AssertableJson $json) =>
             $json
-                ->has('users')
-                ->has('users.count')
-                ->has('users.data')
-                ->has('users.data.0', fn ($json) =>
+                ->has('count')
+                ->has('links')
+                ->has('users.0', fn ($json) =>
                     $json
                         ->where('id', '88888888-4444-4444-4444-121212121212')
                         ->where('username', 'username')
-                        ->where('media_count', 42)
-                        ->where('created_at', '2023-02-24T19:42:56.000000Z')
-                        ->where('updated_at', '2023-02-24T19:42:56.000000Z')
+                        ->where('instagram_posts_count', 42)
+                        ->where('shared_posts_count', 1)
                         ->where('link', '/api/users/88888888-4444-4444-4444-121212121212')
                 )
         );
-    }
-
-    private function expires(): int
-    {
-        $expiresAt = 1677267776 + 1677267776;
-        $diff = $expiresAt - time();
-
-        return (int) round($diff / 86400);
     }
 }

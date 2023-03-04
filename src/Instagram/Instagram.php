@@ -47,10 +47,6 @@ final class Instagram extends Auth
             return new MePostCollection(Cache::get($cacheKey));
 
         } catch (GuzzleException $e) {
-            if (getenv('APP_ENV') === 'testing') {
-                return new MePostCollection([self::getPost(12345678910)]);
-            }
-
             throw new Exception('BAD_TOKEN_OR_USAGE', $e->getCode());
         }
     }
@@ -84,18 +80,6 @@ final class Instagram extends Auth
             return Cache::get($cacheKey);
 
         } catch (GuzzleException $e) {
-            if (getenv('APP_ENV') === 'testing' && $id === 12345678910) {
-                return new MePostResource((object) [
-                    'id' => 12345678910,
-                    'caption' => 'Caption Post !',
-                    'media_type' => 'IMAGE',
-                    'media_url' => 'http://media.url/12345678910',
-                    'permalink' => 'https://perma.link/12345678910',
-                    'username' => 'username',
-                    'timestamp' => 1677267776,
-                ]);
-            }
-
             /**
              * Bad token or id, Instagram return code 400
              * Exception for bad id
