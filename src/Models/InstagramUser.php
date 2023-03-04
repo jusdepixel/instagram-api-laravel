@@ -10,11 +10,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramUserFactory;
 
 final class InstagramUser extends Model
 {
     use HasFactory;
     use HasUuids;
+
+    protected static function newFactory(): InstagramUserFactory
+    {
+        return InstagramUserFactory::new();
+    }
 
     protected $fillable = [
         'instagram_id',

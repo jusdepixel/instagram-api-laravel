@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Jusdepixel\InstagramApiLaravel\Database\Factories\InstagramPostFactory;
 
 final class InstagramPost extends Model
 {
     use HasFactory;
     use HasUuids;
+
+    protected static function newFactory(): InstagramPostFactory
+    {
+        return InstagramPostFactory::new();
+    }
 
     protected $fillable = [
         'instagram_id',
