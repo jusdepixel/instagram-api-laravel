@@ -21,19 +21,18 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/auth/code/:code",
+							"raw": "{{baseUrl}}/auth/code?code=code",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"auth",
-								"code",
-								":code"
+								"code"
 							],
-							"variable": [
+							"query": [
 								{
 									"key": "code",
-									"value": null
+									"value": "code"
 								}
 							]
 						}
@@ -1805,7 +1804,7 @@
 							]
 						},
 						{
-							"name": "/me/posts/:instagram_id",
+							"name": "/me/posts/:instagramId",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1828,18 +1827,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/me/posts/:instagram_id",
+									"raw": "{{baseUrl}}/me/posts/:instagramId",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"me",
 										"posts",
-										":instagram_id"
+										":instagramId"
 									],
 									"variable": [
 										{
-											"key": "instagram_id",
+											"key": "instagramId",
 											"value": null
 										}
 									]
@@ -1861,7 +1860,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1869,11 +1868,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -1905,7 +1904,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1913,11 +1912,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -1949,7 +1948,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -1957,11 +1956,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -1993,7 +1992,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2001,11 +2000,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -2037,7 +2036,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2045,11 +2044,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -2081,7 +2080,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2089,11 +2088,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -2125,7 +2124,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2133,11 +2132,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -2169,7 +2168,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/me/posts/:instagram_id",
+											"raw": "{{baseUrl}}/api/me/posts/:instagramId",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -2177,11 +2176,11 @@
 												"api",
 												"me",
 												"posts",
-												":instagram_id"
+												":instagramId"
 											],
 											"variable": [
 												{
-													"key": "instagram_id"
+													"key": "instagramId"
 												}
 											]
 										}
@@ -3988,7 +3987,7 @@
 				{
 					"name": "/refresh/token",
 					"request": {
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [],
 						"url": {
 							"raw": "{{baseUrl}}/refresh/token",
@@ -4004,23 +4003,23 @@
 					"response": []
 				},
 				{
-					"name": "/refresh/post/:instagram_id",
+					"name": "/refresh/post/:instagramId",
 					"request": {
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/refresh/post/:instagram_id",
+							"raw": "{{baseUrl}}/refresh/post/:instagramId",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"refresh",
 								"post",
-								":instagram_id"
+								":instagramId"
 							],
 							"variable": [
 								{
-									"key": "instagram_id",
+									"key": "instagramId",
 									"value": null
 								}
 							]

@@ -87,11 +87,11 @@ Route:: middleware([
             ->middleware(\Jusdepixel\InstagramApiLaravel\Http\Middleware\Instagram::class)
             ->group(static function(): void {
 
-                Route::put('/token',
+                Route::patch('/token',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\TokenController::class)
                     ->name('refresh@token');
 
-                Route::put('/post/{instagram_id}',
+                Route::patch('/post/{instagram_id}',
                     \Jusdepixel\InstagramApiLaravel\Http\Controllers\Refresh\PostController::class)
                     ->name('refresh@post');
             });
