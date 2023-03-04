@@ -7,10 +7,6 @@ namespace Jusdepixel\InstagramApiLaravel\Instagram;
 use Jusdepixel\InstagramApiLaravel\DataObjects\ProfileDataObject;
 use Illuminate\Support\Facades\Session as IlluminateSession;
 
-/**
- * Session Instagram user
- * @package Jusdepixel\InstagramApiLaravel\Instagram\Session
- */
 class Session
 {
     public static array $session = [
