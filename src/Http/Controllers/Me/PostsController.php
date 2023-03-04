@@ -15,7 +15,7 @@ final class PostsController extends Controller
     public function __invoke(): MePostCollection|Response
     {
         try {
-            return self::$instagram::getPosts();
+            return new MePostCollection(self::$instagram::getPosts());
         } catch (Exception $e) {
             return (new InstagramException())->render($e);
         }

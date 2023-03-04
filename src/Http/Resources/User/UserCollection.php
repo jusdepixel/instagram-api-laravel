@@ -14,7 +14,7 @@ class UserCollection extends ResourceCollection
     public function toArray($request): array
     {
         return [
-            'data' => $this->collection
+            'users' => $this->collection
                 ->sortByDesc('created_at')
                 ->values()
                 ->all(),

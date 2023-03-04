@@ -14,7 +14,7 @@ class PostCollection extends ResourceCollection
     public function toArray($request): array
     {
         return [
-            'data' => $this->collection
+            'posts' => $this->collection
                 ->sortByDesc('created_at')
                 ->values()
                 ->all(),

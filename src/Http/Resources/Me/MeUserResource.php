@@ -9,8 +9,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class MeUserResource extends JsonResource
 {
-    public static $wrap = 'user';
-
     public function toArray($request): array
     {
         return [
