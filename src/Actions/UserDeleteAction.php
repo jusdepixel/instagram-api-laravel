@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Actions;
 
+use Jusdepixel\InstagramApiLaravel\Instagram\Auth;
 use Jusdepixel\InstagramApiLaravel\Models\InstagramPost;
 
 /**
@@ -11,14 +12,16 @@ use Jusdepixel\InstagramApiLaravel\Models\InstagramPost;
  */
 final class UserDeleteAction
 {
-    public function process(): bool
+    public function process(): int
     {
-        $user = (new UserGetAction)->process();
+        if ($user = (new UserGetAction)->process()) {
+            (new Auth)::logout();
 
-        $posts = InstagramPost::query()
-            ->where('instagram_user_id', $user->__get('id'))
-            ->delete();
+            return InstagramPost::query()
+                ->where('instagram_user_id', $user->__get('id'))
+                ->delete();
+        }
 
-        return $posts ? $user->delete() : false;
+        return 0;
     }
 }
