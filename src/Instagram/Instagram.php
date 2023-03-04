@@ -78,10 +78,10 @@ final class Instagram extends Auth
                 );
                 $result = json_decode($response->getBody()->getContents());
 
-                Cache::add($cacheKey, $result);
+                Cache::add($cacheKey, new MePostResource($result));
             }
 
-            return new MePostResource(Cache::get($cacheKey));
+            return Cache::get($cacheKey);
 
         } catch (GuzzleException $e) {
             if (getenv('APP_ENV') === 'testing' && $id === 12345678910) {
