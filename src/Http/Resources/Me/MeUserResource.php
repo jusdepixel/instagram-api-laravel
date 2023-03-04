@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Http\Resources\Me;
 
+use Illuminate\Support\Carbon;
 use Jusdepixel\InstagramApiLaravel\Http\Resources\Post\PostCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -20,10 +21,24 @@ class MeUserResource extends JsonResource
             'media_count' => $this->media_count,
             'access_token' => $this->access_token,
             'expires_in' => $this->expires_in,
+            'expires_in_human' => $this->expiresInHuman($this->expires_in),
+            'posts_auto' => (bool) $this->posts_auto,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'link' => '/api/users/' . $this->id,
             'posts' => new PostCollection($this->whenLoaded('posts')),
         ];
+    }
+
+    private function expiresInHuman(int $expiresIn): string
+    {
+        $startDate = Carbon::createFromTimestamp(time());
+        $endDate = Carbon::createFromTimestamp(time() + $expiresIn);
+
+        $days = $startDate->diffInDays($endDate);
+        $hours = $startDate->copy()->addDays($days)->diffInHours($endDate);
+        $minutes = $startDate->copy()->addDays($days)->addHours($hours)->diffInMinutes($endDate);
+
+        return "$days days, $hours hours and $minutes minutes";
     }
 }
