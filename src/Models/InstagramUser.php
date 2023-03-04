@@ -27,7 +27,7 @@ final class InstagramUser extends Model
         'media_count',
         'token_type',
         'expires_in',
-        'updated_time',
+        'posts_auto',
     ];
 
     protected int $instagram_id;
@@ -36,7 +36,7 @@ final class InstagramUser extends Model
     protected string $access_token;
     protected string $token_type;
     protected string $expires_in;
-    protected string $updated_time;
+    protected bool $posts_auto;
 
     public function posts(): HasMany
     {

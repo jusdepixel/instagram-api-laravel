@@ -21,6 +21,7 @@ class Session
         'user_id' => null,
         'access_token' => null,
         'expires_in' => null,
+        'posts_auto' => false,
     ];
 
     protected static function setSession(array $session): ProfileDataObject

@@ -25,6 +25,7 @@ class InstagramUserFactory extends Factory
             'expires_in' => 1677267776,
             'created_at' => '2023-02-24T19:42:56.000000Z',
             'updated_at' => '2023-02-24T19:42:56.000000Z',
+            'posts_auto' => false,
         ];
     }
 }

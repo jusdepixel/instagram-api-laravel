@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('media_count')->nullable();
             $table->string('access_token')->nullable();
             $table->integer('expires_in')->nullable();
+            $table->boolean('posts_auto')->nullable();
             $table->timestamps();
         });
     }

@@ -22,7 +22,8 @@ abstract class Instagram extends TestCase
             'media_count' => 42,
             'user_id' => '88888888-4444-4444-4444-121212121212',
             'access_token' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA',
-            'expires_in' => 86400
+            'expires_in' => 86400,
+            'posts_auto' => false,
 
         ]);
     }

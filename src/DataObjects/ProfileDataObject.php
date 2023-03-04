@@ -14,6 +14,7 @@ final class ProfileDataObject
         public ?int $media_count,
         public ?string $access_token,
         public ?int $expires_in,
+        public bool $posts_auto,
     ) {}
 
     public static function make(
@@ -27,6 +28,7 @@ final class ProfileDataObject
             media_count: $profile->media_count,
             access_token: $profile->access_token,
             expires_in: $profile->expires_in,
+            posts_auto: $profile->posts_auto,
         );
     }
 
@@ -40,6 +42,7 @@ final class ProfileDataObject
             'media_count' => $this->media_count,
             'access_token' => $this->access_token,
             'expires_in' => $this->expires_in,
+            'posts_auto' => $this->posts_auto,
         ];
     }
 }
