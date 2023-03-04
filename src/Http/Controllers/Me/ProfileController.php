@@ -15,7 +15,7 @@ final class ProfileController extends Controller
     {
         return response(
             new MeUserResource(InstagramUser::query()
-                ->where(['instagram_id' => self::$instagram::getProfile()->instagram_id])
+                ->find(self::$instagram::getProfile()->user_id)
                 ->first()
             )
         );
