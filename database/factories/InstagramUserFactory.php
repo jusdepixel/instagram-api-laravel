@@ -22,7 +22,7 @@ class InstagramUserFactory extends Factory
             'username' => "username",
             'media_count' => 42,
             'access_token' => 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA',
-            'expires_in' => 1677267776,
+            'expires_in' => 5184000,
             'posts_auto' => false,
             'created_at' => '2023-02-24T19:42:56.000000Z',
             'updated_at' => '2023-02-24T19:42:56.000000Z',
