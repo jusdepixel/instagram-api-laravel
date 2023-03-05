@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Jusdepixel\InstagramApiLaravel\Models\InstagramUser;
 
 return new class extends Migration
 {
@@ -21,7 +20,7 @@ return new class extends Migration
             $table->string('media_url');
             $table->string('thumbnail_url')->nullable();
             $table->timestamps();
-            $table->foreignIdFor(InstagramUser::class)->constrained()->cascadeOnDelete();
+            $table->foreignId('instagram_user_id')->constrained()->cascadeOnDelete();
         });
     }
 
