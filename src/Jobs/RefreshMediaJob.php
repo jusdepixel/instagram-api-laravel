@@ -19,14 +19,14 @@ class RefreshMediaJob implements ShouldQueue
     /**
      * @throws Exception
      */
-    public function __invoke(): void
+    public function __invoke(?int $nbDays = null): int
     {
-        $dateToRefresh = Carbon::now()->subDays(2)->toDateTimeString();
+        $dateToRefresh = Carbon::now()->subDays($nbDays === null ? 2 : $nbDays)->toDateTimeString();
         $instagram = new Instagram;
 
         $mediasToRefresh = InstagramPost::query()
             ->select('id', 'instagram_id', 'instagram_user_id')
-            ->with('author')
+            ->with('instagram_user')
             ->where('updated_at', '<=', $dateToRefresh)
             ->get();
 
@@ -34,9 +34,11 @@ class RefreshMediaJob implements ShouldQueue
             $post->update([
                 'media_url' => $instagram->refreshMedia(
                     $post->__get('instagram_id'),
-                    $post->__get('author')->__get('access_token')
+                    $post->__get('instagram_user')->__get('access_token')
                 )
             ]);
         });
+
+        return count($mediasToRefresh);
     }
 }

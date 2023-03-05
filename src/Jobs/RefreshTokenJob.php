@@ -18,10 +18,13 @@ class RefreshTokenJob implements ShouldQueue
     /**
      * @throws Exception
      */
-    public function __invoke(): void
+    public function __invoke(?int $daysExpires = null): int
     {
-        $daysExpires = 58;
         $auth = new Auth;
+
+        if ($daysExpires === null) {
+            $daysExpires = 58;
+        }
 
         $usersToRefresh = InstagramUser::query()
             ->select('id', 'username', 'access_token')
@@ -36,5 +39,7 @@ class RefreshTokenJob implements ShouldQueue
                 'expires_in' => $refreshToken->expires_in
             ]);
         });
+
+        return count($usersToRefresh);
     }
 }
