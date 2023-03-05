@@ -19,7 +19,7 @@ final class UserCacheAction
 
         $postsUser = InstagramPost::query()
             ->select('instagram_id')
-            ->where('instagram_user_id', $id)
+            ->where('instagram_user_id', (new Profile)::getProfile()->instagram_user_id)
             ->get();
 
         $postsUser->each(function ($post) {
