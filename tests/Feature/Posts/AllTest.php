@@ -46,12 +46,4 @@ class AllTest extends Instagram
                 )
         );
     }
-
-    private function expires(): int
-    {
-        $expiresAt = 1677267776 + 1677267776;
-        $diff = $expiresAt - time();
-
-        return (int) round($diff / 86400);
-    }
 }

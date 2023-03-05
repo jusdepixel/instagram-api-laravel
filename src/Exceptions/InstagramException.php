@@ -14,11 +14,13 @@ use Illuminate\Http\Response;
  */
 class InstagramException extends Exception
 {
+    public bool $testing = false;
+
     private function myResponse(string $message, int $code, ?array $traces = null): Response
     {
         $response['message'] = $message;
 
-        if (getenv('APP_ENV') !== 'testing') {
+        if (getenv('APP_ENV') !== 'testing' || $this->testing === true) {
             $profile = Auth::getProfile();
 
             $profile->is_authenticated ?

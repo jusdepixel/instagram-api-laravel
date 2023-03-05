@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Jusdepixel\InstagramApiLaravel\Tests\Feature\Me;
 
-use Jusdepixel\InstagramApiLaravel\Database\Seeders\InstagramSeeder;
 use Exception;
-use Illuminate\Testing\Fluent\AssertableJson;
 use Jusdepixel\InstagramApiLaravel\Tests\Instagram;
 
 class PostOneTest extends Instagram

@@ -3,5 +3,5 @@
 /.phpunit.cache
 /vendor
 /database/database.sqlite
-
+/coverage
 
