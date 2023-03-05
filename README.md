@@ -3,7 +3,8 @@ Get your instagram feeds and share them !
 ***
 ![Laravel support v9, v10](https://img.shields.io/badge/Laravel%20Support-v9%2C%20v10-blue)
 ![Tests passing](https://img.shields.io/badge/Tests-passing-brightgreen)
-![Licence](https://img.shields.io/badge/Licence-MIT-yellow)
+![Coverage 90%](https://img.shields.io/badge/Coverage-90%25-green)
+![Licence MIT](https://img.shields.io/badge/Licence-MIT-yellow)
 
 ## Configuration
 #### Setting your Instagram application in .env
@@ -11,7 +12,7 @@ Get your instagram feeds and share them !
 INSTAGRAM_ROUTES_PREFIX=api
 INSTAGRAM_CLIENT_ID=INSTAGRAM_CLIENT_ID
 INSTAGRAM_CLIENT_SECRET=INSTAGRAM_CLIENT_SECRET
-INSTAGRAM_REQUEST_URI=INSTAGRAM_REQUEST_URI/INSTAGRAM_ROUTES_PREFIX/auth/code
+INSTAGRAM_REQUEST_URI=https://mydomain.me/INSTAGRAM_ROUTES_PREFIX/auth/code
 ```
 
 ## Installation
@@ -35,6 +36,10 @@ protected function schedule(Schedule $schedule): void
 #### Run migration
 ```
 php artisan migrate
+```
+#### And start server
+```
+php artisan serve
 ```
 
 ## Usage
