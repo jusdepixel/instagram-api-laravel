@@ -15,17 +15,32 @@ class MePostResource extends JsonResource
     public function toArray($request): array
     {
         $post = InstagramPost::query()->select('id')->where('instagram_id', $this->id)->first();
+        $me = (new Profile)::getProfile()->instagram_user_id;
 
         return [
             'id' => $post?->id,
             'caption' => $this->caption,
             'instagram_id' => $this->id,
-            'instagram_user_id' => (new Profile)::getProfile()->instagram_user_id,
+            'instagram_user_id' => $me === null ? $this->instagram_user_id : $me,
             'media_type' => $this->media_type,
             'media_url' => $this->media_url,
             'permalink' => $this->permalink,
             'username' => $this->username,
             'timestamp' => $this->timestamp,
         ];
+    }
+
+    public function setInstagramUserId(string $instagramUserId): self
+    {
+        $this->instagram_user_id = $instagramUserId;
+
+        return $this;
+    }
+
+    public function setId(string $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 }
