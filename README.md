@@ -1,5 +1,5 @@
 # Instagram Api Laravel
-Get multiple instagram feeds and share them in one feed !
+Get multiple instagram feeds and share them in one
 ***
 ![Laravel support v9, v10](https://img.shields.io/badge/Laravel%20Support-v9%2C%20v10-blue)
 ![Tests passing](https://img.shields.io/badge/Tests-passing-brightgreen)
