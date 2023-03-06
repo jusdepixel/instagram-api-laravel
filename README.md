@@ -1,9 +1,8 @@
 # Instagram Api Laravel
-Get your instagram feeds and share them !
+Get multiple instagram feeds and share them in one feed !
 ***
 ![Laravel support v9, v10](https://img.shields.io/badge/Laravel%20Support-v9%2C%20v10-blue)
 ![Tests passing](https://img.shields.io/badge/Tests-passing-brightgreen)
-![Coverage 90%](https://img.shields.io/badge/Coverage-90%25-green)
 ![Licence MIT](https://img.shields.io/badge/Licence-MIT-yellow)
 
 ## Configuration
@@ -28,9 +27,9 @@ Jusdepixel\InstagramApiLaravel\InstagramServiceProvider::class,
 ```
 protected function schedule(Schedule $schedule): void
 {
-    /** ... */
     $schedule->job(new RefreshTokenJob)->daily();
     $schedule->job(new RefreshMediaJob)->daily();
+    $schedule->job(new AutoRepostJob)->daily();
 }
 ```
 #### Run migration
@@ -47,7 +46,7 @@ php artisan serve
 ```
 GET /api/init/url
 ```
-#### Return code
+#### Copy returned code
 ```
 {"code":"INSTAGRAM_CODE"}
 ```
