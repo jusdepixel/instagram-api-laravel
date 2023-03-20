@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('instagram_posts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->integer('instagram_id')->unique();
-            $table->timestamp('timestamp');
-            $table->timestamp('caption')->nullable();
+            $table->string('instagram_id')->unique();
+            $table->string('timestamp');
+            $table->string('caption')->nullable();
             $table->string('permalink');
             $table->string('media_type');
-            $table->string('media_url');
+            $table->text('media_url');
             $table->string('thumbnail_url')->nullable();
             $table->timestamps();
-            $table->foreignId('instagram_user_id');
+            $table->string('instagram_user_id');
         });
     }
 
