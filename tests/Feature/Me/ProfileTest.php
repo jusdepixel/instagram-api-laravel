@@ -46,7 +46,7 @@ class ProfileTest extends Instagram
             $json
                 ->where('id', '88888888-4444-4444-4444-121212121212')
                 ->where('username', 'username')
-                ->where('instagram_id', 123456789)
+                ->where('instagram_id', '123456789')
                 ->where('media_count', 42)
                 ->where('access_token', 'iu0aMCsaepPy6ULphSX5PT32oPvKkM5dPl131knIDq9Cr8OUzzACsuBnpSJ_rE9XkGjmQVawcvyCHLiM4Kr6NA')
                 ->where('expires_in', 5184000)

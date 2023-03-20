@@ -38,7 +38,7 @@ abstract class Instagram extends TestCase
             'media_url' => 'http://media.url/12345678910',
             'permalink' => 'https://perma.link/12345678910',
             'username' => 'username',
-            'timestamp' => 1677267776,
+            'timestamp' => '1677267776',
         ];
 
         return new MePostResource((object) $post);

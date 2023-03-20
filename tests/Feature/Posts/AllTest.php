@@ -34,7 +34,7 @@ class AllTest extends Instagram
                         ->where('media_type', 'IMAGE')
                         ->where('media_url', 'http://media.url/123456789')
                         ->where('thumbnail_url', 'http://thumbnail.url/12345678910')
-                        ->where('timestamp', 1677267776)
+                        ->where('timestamp', '1677267776')
                         ->where('created_at', '2023-02-24T19:42:56.000000Z')
                         ->where('author', [
                             'id' => '88888888-4444-4444-4444-121212121212',

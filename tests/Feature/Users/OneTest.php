@@ -51,7 +51,7 @@ class OneTest extends Instagram
                             'media_type' => 'IMAGE',
                             'media_url' => 'http://media.url/123456789',
                             'thumbnail_url' => 'http://thumbnail.url/12345678910',
-                            'timestamp' => 1677267776,
+                            'timestamp' => '1677267776',
                             'created_at' => '2023-02-24T19:42:56.000000Z',
                             'permalink' => 'https://perma.link/123456789',
                             'link' => '/api/posts/bac04411-9999-4cd2-b9d9-06ad4f9c1c62'
