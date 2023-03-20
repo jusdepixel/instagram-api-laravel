@@ -15,7 +15,7 @@ class PostCollection extends ResourceCollection
     {
         return [
             'posts' => $this->collection
-                ->sortByDesc('created_at')
+                ->sortByDesc('timestamp')
                 ->values()
                 ->all(),
             'count' => $this->count(),
