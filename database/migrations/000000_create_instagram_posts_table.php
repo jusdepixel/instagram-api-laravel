@@ -16,12 +16,12 @@ return new class extends Migration
             $table->integer('instagram_id')->unique();
             $table->timestamp('timestamp');
             $table->timestamp('caption')->nullable();
-            $table->timestamp('permalink');
+            $table->string('permalink');
             $table->string('media_type');
             $table->string('media_url');
             $table->string('thumbnail_url')->nullable();
             $table->timestamps();
-            $table->foreignIdFor(InstagramUser::class)->constrained()->cascadeOnDelete();
+            $table->foreignId('instagram_user_id');
         });
     }
 
